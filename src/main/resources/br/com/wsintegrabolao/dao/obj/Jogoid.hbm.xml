@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 23/02/2018 15:56:59 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="br.com.wsintegrabolao.dao.obj.Jogoid" table="jogoid" schema="public" optimistic-lock="version">
+        <id name="cdJogo" type="int">
+            <column name="cd_jogo" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="equipeByCdEquipe2" class="br.com.wsintegrabolao.dao.obj.Equipe" fetch="select">
+            <column name="cd_equipe2" length="10" not-null="true" />
+        </many-to-one>
+        <many-to-one name="equipeByCdEquipe1" class="br.com.wsintegrabolao.dao.obj.Equipe" fetch="select">
+            <column name="cd_equipe1" length="10" not-null="true" />
+        </many-to-one>
+        <property name="stClassificougolsfora" type="java.lang.Boolean">
+            <column name="st_classificougolsfora" />
+        </property>
+        <property name="dtJogo" type="date">
+            <column name="dt_jogo" length="13" />
+        </property>
+        <property name="dspTime1" type="string">
+            <column name="dsp_time1" length="2" />
+        </property>
+        <property name="dspTime2" type="string">
+            <column name="dsp_time2" length="2" />
+        </property>
+        <property name="stEliminoujogovolta" type="java.lang.Boolean">
+            <column name="st_eliminoujogovolta" />
+        </property>
+        <property name="dsEstadio" type="string">
+            <column name="ds_estadio" length="100" />
+        </property>
+        <property name="hrJogo" type="string">
+            <column name="hr_jogo" length="15" />
+        </property>
+        <property name="dsLocal" type="string">
+            <column name="ds_local" length="100" />
+        </property>
+        <property name="nrJogo" type="string">
+            <column name="nr_jogo" length="5" />
+        </property>
+        <property name="plPenalti1" type="string">
+            <column name="pl_penalti1" length="5" />
+        </property>
+        <property name="plPenalti2" type="string">
+            <column name="pl_penalti2" length="5" />
+        </property>
+        <property name="plTime1" type="string">
+            <column name="pl_time1" length="5" />
+        </property>
+        <property name="plTime2" type="string">
+            <column name="pl_time2" length="5" />
+        </property>
+        <property name="psJogo" type="string">
+            <column name="ps_jogo" length="5" />
+        </property>
+        <property name="nrRodada" type="string">
+            <column name="nr_rodada" length="10" />
+        </property>
+        <property name="urlPosjogo" type="string">
+            <column name="url_posjogo" />
+        </property>
+        <property name="urlPrejogo" type="string">
+            <column name="url_prejogo" />
+        </property>
+        <property name="urlVideo" type="string">
+            <column name="url_video" />
+        </property>
+        <set name="datajogoses" table="datajogos" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="cd_jogo" not-null="true" />
+            </key>
+            <one-to-many class="br.com.wsintegrabolao.dao.obj.Datajogos" />
+        </set>
+        <set name="rodadajogoses" table="rodadajogos" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="cd_jogo" not-null="true" />
+            </key>
+            <one-to-many class="br.com.wsintegrabolao.dao.obj.Rodadajogos" />
+        </set>
+    </class>
+</hibernate-mapping>
