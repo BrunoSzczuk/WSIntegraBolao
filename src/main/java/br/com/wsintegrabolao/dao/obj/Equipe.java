@@ -1,16 +1,13 @@
 package br.com.wsintegrabolao.dao.obj;
 // Generated 23/02/2018 15:56:58 by Hibernate Tools 4.3.1
 
-import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**

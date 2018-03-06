@@ -8,6 +8,7 @@ package br.com.wsintegrabolao.ws;
 import br.com.wsintegrabolao.dao.ConexaoDAO;
 import br.com.wsintegrabolao.dao.obj.Equipe;
 import com.google.gson.Gson;
+import java.util.List;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -37,11 +38,23 @@ public class funcoes {
      */
     @WebMethod(operationName = "getEquipe")
     public String getEquipe(@WebParam(name = "cdEquipe") String cdEquipe) {
+        Equipe e = null;
         try {
-            Equipe e = ConexaoDAO.getInstance().getEm().find(Equipe.class, cdEquipe);
+            e = ConexaoDAO.getInstance().getEm().find(Equipe.class, cdEquipe);
             return g.toJson(e);
-        }catch (Exception e){
-            return e.getMessage();
+        }catch (Exception ex){
+            ex.printStackTrace();
         }
+        return g.toJson(e);
+    }
+    
+    public String getEquipeList(){
+        List<Equipe> equipes = null;
+        try{
+             equipes = ConexaoDAO.getInstance().getEm().createNamedQuery("Equipe.findAll", Equipe.class).getResultList();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return g.toJson(equipes);
     }
 }
