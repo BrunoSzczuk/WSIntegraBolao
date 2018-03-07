@@ -12,6 +12,7 @@ import java.util.List;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
+import javax.persistence.NoResultException;
 
 /**
  *
@@ -42,17 +43,20 @@ public class funcoes {
         try {
             e = ConexaoDAO.getInstance().getEm().find(Equipe.class, cdEquipe);
             return g.toJson(e);
-        }catch (Exception ex){
+        } catch (NoResultException n) {
+            return "Não há nenhuma equipe com esse código";
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
         return g.toJson(e);
     }
-    
-    public String getEquipeList(){
+
+    @WebMethod(operationName = "getEquipeList")
+    public String getEquipeList() {
         List<Equipe> equipes = null;
-        try{
-             equipes = ConexaoDAO.getInstance().getEm().createNamedQuery("Equipe.findAll", Equipe.class).getResultList();
-        }catch (Exception e){
+        try {
+            equipes = ConexaoDAO.getInstance().getEm().createQuery("SELECT e FROM Equipe e", Equipe.class).getResultList();
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return g.toJson(equipes);

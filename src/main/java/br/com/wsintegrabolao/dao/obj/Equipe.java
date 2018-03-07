@@ -1,6 +1,8 @@
 package br.com.wsintegrabolao.dao.obj;
 // Generated 23/02/2018 15:56:58 by Hibernate Tools 4.3.1
 
+import br.com.wsintegrabolao.dao.ConexaoDAO;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 import javax.persistence.Column;
@@ -202,7 +204,6 @@ public class Equipe implements java.io.Serializable {
         }
         return true;
     }
-
     @Override
     public String toString() {
         return "Equipe{" + "cdEquipe=" + cdEquipe + ", brEquipe=" + brEquipe + ", corEquipe=" + corEquipe + ", nmEquipe=" + nmEquipe + ", nmComum=" + nmComum + ", nmSlug=" + nmSlug + ", sgEquipe=" + sgEquipe + ", tgEquipe=" + tgEquipe + ", tpEquipe=" + tpEquipe + ", uriEquipe=" + uriEquipe  + '}';
