@@ -22,15 +22,7 @@ import javax.persistence.NoResultException;
 @WebService(serviceName = "funcoes")
 public class funcoes {
 
-    /**
-     * This is a sample web service operation
-     */
     Gson g = new Gson();
-
-    @WebMethod(operationName = "hello")
-    public String hello(@WebParam(name = "name") String txt) {
-        return "Hello " + txt + " !";
-    }
 
     /**
      * Operação de Web service
@@ -83,9 +75,9 @@ public class funcoes {
             try {
                 return g.toJson(obj);
             } catch (Exception ex) {
-                ex.printStackTrace();
+                return "ERRO: Erro ao gerar Json.";
             }
         }
-        return null;
+        return "ERRO: Objeto nulo ou vazio.";
     }
 }

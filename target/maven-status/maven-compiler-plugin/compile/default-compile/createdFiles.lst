@@ -3,6 +3,7 @@ br\com\wsintegrabolao\dao\obj\Equipe.class
 br\com\wsintegrabolao\dao\obj\Jogoid.class
 br\com\wsintegrabolao\dao\obj\Datajogos.class
 br\com\wsintegrabolao\dao\obj\DatajogosId.class
+br\com\wsintegrabolao\exp\ExceptionDAO.class
 br\com\wsintegrabolao\dao\obj\Rodadajogos.class
 br\com\wsintegrabolao\ws\funcoes.class
 br\com\wsintegrabolao\dao\ConexaoDAO.class
