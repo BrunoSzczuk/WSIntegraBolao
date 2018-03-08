@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 08/03/2018 16:57:59 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="br.com.wsintegrabolao.dao.obj.Posicaousuario" table="posicaousuario" schema="public" optimistic-lock="version">
+        <id name="cdUsuario" type="string">
+            <column name="cd_usuario" length="10" />
+            <generator class="foreign">
+                <param name="property">usuario</param>
+            </generator>
+        </id>
+        <one-to-one name="usuario" class="br.com.wsintegrabolao.dao.obj.Usuario" constrained="true"></one-to-one>
+        <property name="nrSobedesce" type="java.lang.Integer">
+            <column name="nr_sobedesce">
+                <comment>mostrar as posi&#195;&#167;&#195;&#181;es que subiu ou desceu no ranking</comment>
+            </column>
+        </property>
+        <property name="nrPosicao" type="int">
+            <column name="nr_posicao" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

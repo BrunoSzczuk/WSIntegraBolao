@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 08/03/2018 16:57:59 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="br.com.wsintegrabolao.dao.obj.Schedule" table="schedule" schema="public" optimistic-lock="version">
+        <id name="cdRelatorio" type="string">
+            <column name="cd_relatorio" length="10" />
+            <generator class="assigned" />
+        </id>
+        <property name="nmRelatorio" type="string">
+            <column name="nm_relatorio" length="60" />
+        </property>
+        <property name="dsEmail" type="string">
+            <column name="ds_email">
+                <comment>campo com e-mail de destinatarios fixos</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

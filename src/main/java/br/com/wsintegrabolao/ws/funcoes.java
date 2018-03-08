@@ -7,6 +7,7 @@ package br.com.wsintegrabolao.ws;
 
 import br.com.wsintegrabolao.dao.ConexaoDAO;
 import br.com.wsintegrabolao.dao.obj.Equipe;
+import br.com.wsintegrabolao.dao.obj.Usuario;
 import br.com.wsintegrabolao.exp.ExceptionDAO;
 import com.google.gson.Gson;
 import java.util.List;
@@ -32,9 +33,9 @@ public class funcoes {
      */
     @WebMethod(operationName = "getEquipe")
     public String getEquipe(@WebParam(name = "cdEquipe") String cdEquipe) {
-        try{
+        try {
             return getJsonGenerico(getGenerico(cdEquipe, Equipe.class));
-        }catch(ExceptionDAO e){
+        } catch (ExceptionDAO e) {
             return e.getMessage();
         }
     }
@@ -55,7 +56,11 @@ public class funcoes {
      */
     @WebMethod(operationName = "getUsuario")
     public String getUsuario(@WebParam(name = "id") String id) {
-        return null;
+        try {
+            return getJsonGenerico(getGenerico(id, Usuario.class));
+        } catch (ExceptionDAO e) {
+            return e.getMessage();
+        }
     }
 
     private Object getGenerico(String id, Class classe) throws ExceptionDAO {

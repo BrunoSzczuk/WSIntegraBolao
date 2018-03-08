@@ -1,5 +1,5 @@
 package br.com.wsintegrabolao.dao.obj;
-// Generated 23/02/2018 15:56:58 by Hibernate Tools 4.3.1
+// Generated 08/03/2018 16:57:58 by Hibernate Tools 4.3.1
 
 
 import javax.persistence.AttributeOverride;

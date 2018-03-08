@@ -1,5 +1,5 @@
 package br.com.wsintegrabolao.dao.obj;
-// Generated 23/02/2018 15:56:58 by Hibernate Tools 4.3.1
+// Generated 08/03/2018 16:57:58 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -47,6 +47,7 @@ public class Jogoid  implements java.io.Serializable {
      private String urlPosjogo;
      private String urlPrejogo;
      private String urlVideo;
+     private Set palpiteses = new HashSet(0);
      private Set datajogoses = new HashSet(0);
      private Set rodadajogoses = new HashSet(0);
 
@@ -59,7 +60,7 @@ public class Jogoid  implements java.io.Serializable {
         this.equipeByCdEquipe2 = equipeByCdEquipe2;
         this.equipeByCdEquipe1 = equipeByCdEquipe1;
     }
-    public Jogoid(int cdJogo, Equipe equipeByCdEquipe2, Equipe equipeByCdEquipe1, Boolean stClassificougolsfora, Date dtJogo, String dspTime1, String dspTime2, Boolean stEliminoujogovolta, String dsEstadio, String hrJogo, String dsLocal, String nrJogo, String plPenalti1, String plPenalti2, String plTime1, String plTime2, String psJogo, String nrRodada, String urlPosjogo, String urlPrejogo, String urlVideo, Set datajogoses, Set rodadajogoses) {
+    public Jogoid(int cdJogo, Equipe equipeByCdEquipe2, Equipe equipeByCdEquipe1, Boolean stClassificougolsfora, Date dtJogo, String dspTime1, String dspTime2, Boolean stEliminoujogovolta, String dsEstadio, String hrJogo, String dsLocal, String nrJogo, String plPenalti1, String plPenalti2, String plTime1, String plTime2, String psJogo, String nrRodada, String urlPosjogo, String urlPrejogo, String urlVideo, Set palpiteses, Set datajogoses, Set rodadajogoses) {
        this.cdJogo = cdJogo;
        this.equipeByCdEquipe2 = equipeByCdEquipe2;
        this.equipeByCdEquipe1 = equipeByCdEquipe1;
@@ -81,6 +82,7 @@ public class Jogoid  implements java.io.Serializable {
        this.urlPosjogo = urlPosjogo;
        this.urlPrejogo = urlPrejogo;
        this.urlVideo = urlVideo;
+       this.palpiteses = palpiteses;
        this.datajogoses = datajogoses;
        this.rodadajogoses = rodadajogoses;
     }
@@ -88,7 +90,7 @@ public class Jogoid  implements java.io.Serializable {
      @Id 
 
     
-    @Column(name="cd_jogo", unique=true, nullable=false)
+    @Column(name="cd_jogo", nullable=false)
     public int getCdJogo() {
         return this.cdJogo;
     }
@@ -295,6 +297,15 @@ public class Jogoid  implements java.io.Serializable {
     
     public void setUrlVideo(String urlVideo) {
         this.urlVideo = urlVideo;
+    }
+
+@OneToMany(fetch=FetchType.LAZY, mappedBy="jogoid")
+    public Set getPalpiteses() {
+        return this.palpiteses;
+    }
+    
+    public void setPalpiteses(Set palpiteses) {
+        this.palpiteses = palpiteses;
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="jogoid")

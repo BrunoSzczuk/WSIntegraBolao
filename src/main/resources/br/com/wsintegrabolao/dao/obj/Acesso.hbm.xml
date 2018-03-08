@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 08/03/2018 16:57:59 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="br.com.wsintegrabolao.dao.obj.Acesso" table="acesso" schema="public" optimistic-lock="version">
+        <id name="cdAcesso" type="long">
+            <column name="cd_acesso" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="usuario" class="br.com.wsintegrabolao.dao.obj.Usuario" fetch="select">
+            <column name="cd_usuario" length="10" not-null="true" />
+        </many-to-one>
+        <property name="nrIpconexao" type="string">
+            <column name="nr_ipconexao" length="20" />
+        </property>
+        <property name="dtAcesso" type="timestamp">
+            <column name="dt_acesso" length="29" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
