@@ -11,4 +11,5 @@
         <property name="driverClass" value="org.postgresql.Driver"/>
     </jdbc-connection-pool>
     <jdbc-resource enabled="true" jndi-name="xxxx" object-type="user" pool-name="post-gre-sql_bolao_aplicacaoPool"/>
+    <jdbc-resource enabled="true" jndi-name="xD" object-type="user" pool-name="post-gre-sql_bolao_aplicacaoPool"/>
 </resources>

@@ -7,6 +7,7 @@ package br.com.wsintegrabolao.ws;
 
 import br.com.wsintegrabolao.dao.ConexaoDAO;
 import br.com.wsintegrabolao.dao.obj.Equipe;
+import br.com.wsintegrabolao.exp.ExceptionDAO;
 import com.google.gson.Gson;
 import java.util.List;
 import javax.jws.WebService;
@@ -39,16 +40,11 @@ public class funcoes {
      */
     @WebMethod(operationName = "getEquipe")
     public String getEquipe(@WebParam(name = "cdEquipe") String cdEquipe) {
-        Equipe e = null;
-        try {
-            e = ConexaoDAO.getInstance().getEm().find(Equipe.class, cdEquipe);
-            return g.toJson(e);
-        } catch (NoResultException n) {
-            return "Não há nenhuma equipe com esse código";
-        } catch (Exception ex) {
-            ex.printStackTrace();
+        try{
+            return getJsonGenerico(getGenerico(cdEquipe, Equipe.class));
+        }catch(ExceptionDAO e){
+            return e.getMessage();
         }
-        return g.toJson(e);
     }
 
     @WebMethod(operationName = "getEquipeList")
@@ -60,5 +56,36 @@ public class funcoes {
             e.printStackTrace();
         }
         return g.toJson(equipes);
+    }
+
+    /**
+     * Operação de Web service
+     */
+    @WebMethod(operationName = "getUsuario")
+    public String getUsuario(@WebParam(name = "id") String id) {
+        return null;
+    }
+
+    private Object getGenerico(String id, Class classe) throws ExceptionDAO {
+        Object objeto = null;
+        try {
+            objeto = ConexaoDAO.getInstance().getEm().find(classe, id);
+        } catch (NoResultException n) {
+            throw new ExceptionDAO("Não há nenhum registro com esse código");
+        } catch (Exception ex) {
+            throw new ExceptionDAO(ex.getMessage());
+        }
+        return objeto;
+    }
+
+    private String getJsonGenerico(Object obj) {
+        if (obj != null) {
+            try {
+                return g.toJson(obj);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
+        return null;
     }
 }
