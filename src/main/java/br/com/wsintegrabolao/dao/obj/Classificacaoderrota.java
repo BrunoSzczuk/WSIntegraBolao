@@ -2,11 +2,13 @@ package br.com.wsintegrabolao.dao.obj;
 // Generated 08/03/2018 16:57:58 by Hibernate Tools 4.3.1
 
 
+import com.google.gson.annotations.Expose;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
@@ -20,14 +22,19 @@ import org.hibernate.annotations.Parameter;
 @Table(name="classificacaoderrota"
     ,schema="public"
 )
+@NamedQuery(name = "Classificacaoderrota.findByEquipe", query = "SELECT e from Classificacaoderrota e where e.cdEquipe = :cdEquipe")
 public class Classificacaoderrota  implements java.io.Serializable {
 
+    @Expose
+    private String cdEquipe;
 
-     private String cdEquipe;
-     private Equipe equipe;
-     private Integer qtMandante;
-     private Integer qtTotal;
-     private Integer qtVisitante;
+    private Equipe equipe;
+    @Expose
+    private Integer qtMandante;
+    @Expose
+    private Integer qtTotal;
+    @Expose
+    private Integer qtVisitante;
 
     public Classificacaoderrota() {
     }

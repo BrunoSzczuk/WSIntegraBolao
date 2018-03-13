@@ -25,12 +25,11 @@ public class ConexaoDAO {
     public ConexaoDAO() {
         try {
             HashMap<String, String> map = new HashMap<String, String>();
-            map.put("hibernate.connection.username", "aplicacao");
+            map.put("hibernate.connection.username", "bruno");
             map.put("hibernate.connection.driver_class", "org.postgresql.Driver");
-            map.put("hibernate.connection.password", "aplicacao01");
-            map.put("hibernate.connection.url", "jdbc:postgresql://localhost:5432/bolao");
+            map.put("hibernate.connection.password", "brunosoad02");
+            map.put("hibernate.connection.url", "jdbc:postgresql://bolao.cacznkwpq5yo.us-east-2.rds.amazonaws.com/bolao");
             map.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
-
             map.put("hibernate.connection.lc_ctype", "LATIN1");
             map.put("hibernate.cache.provider_class", "org.hibernate.cache.NoCacheProvider");
             

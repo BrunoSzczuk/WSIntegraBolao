@@ -6,15 +6,16 @@
 package br.com.wsintegrabolao.ws;
 
 import br.com.wsintegrabolao.dao.ConexaoDAO;
+import br.com.wsintegrabolao.dao.WSIntegraBolaoController;
 import br.com.wsintegrabolao.dao.obj.Equipe;
 import br.com.wsintegrabolao.dao.obj.Usuario;
 import br.com.wsintegrabolao.exp.ExceptionDAO;
+import br.com.wsintegrabolao.util.Utils;
 import com.google.gson.Gson;
 import java.util.List;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
-import javax.persistence.NoResultException;
 
 /**
  *
@@ -34,9 +35,10 @@ public class funcoes {
     @WebMethod(operationName = "getEquipe")
     public String getEquipe(@WebParam(name = "cdEquipe") String cdEquipe) {
         try {
-            return getJsonGenerico(getGenerico(cdEquipe, Equipe.class));
+            return Utils.getJsonGenerico(Utils.getGenerico(cdEquipe, Equipe.class));
         } catch (ExceptionDAO e) {
-            return e.getMessage();
+            e.printStackTrace();
+            return "Erro";
         }
     }
 
@@ -57,32 +59,34 @@ public class funcoes {
     @WebMethod(operationName = "getUsuario")
     public String getUsuario(@WebParam(name = "id") String id) {
         try {
-            return getJsonGenerico(getGenerico(id, Usuario.class));
+            return Utils.getJsonGenerico(Utils.getGenerico(id, Usuario.class));
         } catch (ExceptionDAO e) {
             return e.getMessage();
         }
     }
 
-    private Object getGenerico(String id, Class classe) throws ExceptionDAO {
-        Object objeto = null;
-        try {
-            objeto = ConexaoDAO.getInstance().getEm().find(classe, id);
-        } catch (NoResultException n) {
-            throw new ExceptionDAO("Não há nenhum registro com esse código");
-        } catch (Exception ex) {
-            throw new ExceptionDAO(ex.getMessage());
+    /**
+     * Operação de Web service
+     */
+    @WebMethod(operationName = "getClassificacao")
+    public String getClassificacao(@WebParam(name = "id") String id) {
+        try{
+            //return Utils.getJsonGenerico(new ArrayList<>(ConexaoDAO.getInstance().getEm().createQuery("SELECT c FROM Classificacao c", Classificacao.class).getResultList()));
+            //return Utils.getJsonGenerico(Utils.getGenerico(id, Classificacao.class));
+            return Utils.getJsonGenerico(WSIntegraBolaoController.getClassificacao(id));
+        }catch (Exception e){
+            return e.getMessage();
         }
-        return objeto;
-    }
-
-    private String getJsonGenerico(Object obj) {
-        if (obj != null) {
-            try {
-                return g.toJson(obj);
-            } catch (Exception ex) {
-                return "ERRO: Erro ao gerar Json.";
-            }
+   /*     List<ClassificacaoDAO> equipes = null;
+        try{
+            equipes = ConexaoDAO.getInstance().getEm().createQuery("SELECT e FROM ClassificacaoDAO e", ClassificacaoDAO.class).getResultList();
+            ResultSet rs = ConexaoDAO.getInstance().
+        }catch(Exception e) {
+            return e.getMessage();
         }
-        return "ERRO: Objeto nulo ou vazio.";
+        return g.toJson(equipes);*/
+        
     }
+    
+    
 }
