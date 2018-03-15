@@ -12,19 +12,24 @@ import br.com.wsintegrabolao.dao.obj.Usuario;
 import br.com.wsintegrabolao.exp.ExceptionDAO;
 import br.com.wsintegrabolao.util.Utils;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import java.util.List;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 
 /**
  *
  * @author bruno.szczuk
  */
 @WebService(serviceName = "funcoes")
+@Path("funcoes")
 public class funcoes {
 
-    Gson g = new Gson();
+    Gson gsonGenerico = new Gson();
+    Gson gsonExpose = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
 
     /**
      * Operação de Web service
@@ -33,9 +38,10 @@ public class funcoes {
      * @return
      */
     @WebMethod(operationName = "getEquipe")
-    public String getEquipe(@WebParam(name = "cdEquipe") String cdEquipe) {
+    @Path("getEquipe/{cdEquipe}")
+    public String getEquipe(@WebParam(name = "cdEquipe") @PathParam(value = "cdEquipe") String cdEquipe) {
         try {
-            return Utils.getJsonGenerico(Utils.getGenerico(cdEquipe, Equipe.class));
+            return Utils.getJsonGenerico(Utils.getGenerico(cdEquipe, Equipe.class), gsonGenerico);
         } catch (ExceptionDAO e) {
             e.printStackTrace();
             return "Erro";
@@ -50,16 +56,17 @@ public class funcoes {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return g.toJson(equipes);
+        return Utils.getJsonGenerico(equipes, gsonGenerico);
     }
 
     /**
      * Operação de Web service
+     * @param id
      */
     @WebMethod(operationName = "getUsuario")
     public String getUsuario(@WebParam(name = "id") String id) {
         try {
-            return Utils.getJsonGenerico(Utils.getGenerico(id, Usuario.class));
+            return Utils.getJsonGenerico(Utils.getGenerico(id, Usuario.class), gsonGenerico);
         } catch (ExceptionDAO e) {
             return e.getMessage();
         }
@@ -67,25 +74,15 @@ public class funcoes {
 
     /**
      * Operação de Web service
+     * @param id
      */
     @WebMethod(operationName = "getClassificacao")
     public String getClassificacao(@WebParam(name = "id") String id) {
         try{
-            //return Utils.getJsonGenerico(new ArrayList<>(ConexaoDAO.getInstance().getEm().createQuery("SELECT c FROM Classificacao c", Classificacao.class).getResultList()));
-            //return Utils.getJsonGenerico(Utils.getGenerico(id, Classificacao.class));
-            return Utils.getJsonGenerico(WSIntegraBolaoController.getClassificacao(id));
+            return Utils.getJsonGenerico(WSIntegraBolaoController.getClassificacao(id), gsonExpose);
         }catch (Exception e){
             return e.getMessage();
         }
-   /*     List<ClassificacaoDAO> equipes = null;
-        try{
-            equipes = ConexaoDAO.getInstance().getEm().createQuery("SELECT e FROM ClassificacaoDAO e", ClassificacaoDAO.class).getResultList();
-            ResultSet rs = ConexaoDAO.getInstance().
-        }catch(Exception e) {
-            return e.getMessage();
-        }
-        return g.toJson(equipes);*/
-        
     }
     
     

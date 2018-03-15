@@ -8,7 +8,6 @@ package br.com.wsintegrabolao.util;
 import br.com.wsintegrabolao.dao.ConexaoDAO;
 import br.com.wsintegrabolao.exp.ExceptionDAO;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import javax.persistence.NoResultException;
 
 /**
@@ -29,11 +28,10 @@ public class Utils {
         return objeto;
     }
 
-    public static String getJsonGenerico(Object obj) {
-        Gson g = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
-        if (obj != null) {
+    public static String getJsonGenerico(Object obj, Gson gson) {
+        if (obj != null && gson != null) {
             try {
-                return g.toJson(obj);
+                return gson.toJson(obj);
             } catch (Exception ex) {
                 ex.printStackTrace();
                 return "ERRO: Erro ao gerar Json.";
