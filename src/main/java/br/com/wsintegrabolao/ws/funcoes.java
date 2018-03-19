@@ -17,15 +17,12 @@ import java.util.List;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
 
 /**
  *
  * @author bruno.szczuk
  */
 @WebService(serviceName = "funcoes")
-@Path("funcoes")
 public class funcoes {
 
     Gson gsonGenerico = new Gson();
@@ -38,12 +35,10 @@ public class funcoes {
      * @return
      */
     @WebMethod(operationName = "getEquipe")
-    @Path("getEquipe/{cdEquipe}")
-    public String getEquipe(@WebParam(name = "cdEquipe") @PathParam(value = "cdEquipe") String cdEquipe) {
+    public String getEquipe(@WebParam(name = "cdEquipe") String cdEquipe) {
         try {
             return Utils.getJsonGenerico(Utils.getGenerico(cdEquipe, Equipe.class), gsonGenerico);
         } catch (ExceptionDAO e) {
-            e.printStackTrace();
             return "Erro";
         }
     }
@@ -61,6 +56,7 @@ public class funcoes {
 
     /**
      * Operação de Web service
+     *
      * @param id
      */
     @WebMethod(operationName = "getUsuario")
@@ -74,16 +70,16 @@ public class funcoes {
 
     /**
      * Operação de Web service
+     *
      * @param id
      */
     @WebMethod(operationName = "getClassificacao")
     public String getClassificacao(@WebParam(name = "id") String id) {
-        try{
+        try {
             return Utils.getJsonGenerico(WSIntegraBolaoController.getClassificacao(id), gsonExpose);
-        }catch (Exception e){
+        } catch (Exception e) {
             return e.getMessage();
         }
     }
-    
-    
+
 }

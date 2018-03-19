@@ -9,9 +9,12 @@ import com.google.gson.annotations.Expose;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Entity
@@ -22,13 +25,13 @@ public class ClassificacaoDAO implements Serializable {
     @Expose
     private int golsPro;
 
-    @OneToOne
-    @JoinColumn(name = "cd_equipe")
+    @OneToOne(fetch = FetchType.LAZY)
+    @PrimaryKeyJoinColumn
     @Expose
     private Equipe equipe;
-    
+
     @Id
-    @Column(name = "cd_equipe")
+    @Column(name = "cd_equipe", insertable = false, updatable = false)
     @Expose
     private String cdEquipe;
 
@@ -64,29 +67,29 @@ public class ClassificacaoDAO implements Serializable {
     @Expose
     private String ganho_pos;
 
-    @OneToOne(mappedBy = "cdEquipe")
+    @OneToOne
     @Expose
-    @JoinColumn(name = "cd_equipe", referencedColumnName = "cd_equipe", insertable = true, updatable = true)
+    @JoinColumn(name = "cd_equipe", referencedColumnName = "cd_equipe", insertable = false, updatable = false)
     private Classificacaopg pontosGols;
 
-    @OneToOne(mappedBy = "cdEquipe")
+    @ManyToOne
     @Expose
-    @JoinColumn(name = "cd_equipe", referencedColumnName = "cd_equipe", insertable = true, updatable = true)
+    @JoinColumn(name = "cd_equipe", referencedColumnName = "cd_equipe", insertable = false, updatable = false)
     private Classificacaojogo jogos;
 
-    @OneToOne(mappedBy = "cdEquipe")
+    @ManyToOne
     @Expose
-    @JoinColumn(name = "cd_equipe", referencedColumnName = "cd_equipe", insertable = true, updatable = true)
+    @JoinColumn(name = "cd_equipe", referencedColumnName = "cd_equipe", insertable = false, updatable = false)
     private Classificacaovitoria vitoria;
 
-    @OneToOne(mappedBy = "cdEquipe")
+    @ManyToOne
     @Expose
-    @JoinColumn(name = "cd_equipe", referencedColumnName = "cd_equipe", insertable = true, updatable = true)
+    @JoinColumn(name = "cd_equipe", referencedColumnName = "cd_equipe", insertable = false, updatable = false)
     private Classificacaoempate empate;
 
-    @OneToOne(mappedBy = "cdEquipe")
+    @ManyToOne
     @Expose
-    @JoinColumn(name = "cd_equipe", referencedColumnName = "cd_equipe", insertable = true, updatable = true)
+    @JoinColumn(name = "cd_equipe", referencedColumnName = "cd_equipe", insertable = false, updatable = false)
     private Classificacaoderrota derrota;
 
     @Column(name = "pc_aproveitamento")
@@ -175,7 +178,6 @@ public class ClassificacaoDAO implements Serializable {
     public void setGanho_pos(String ganho_pos) {
         this.ganho_pos = ganho_pos;
     }
-
 
     public float getAproveitamento() {
         return aproveitamento;

@@ -14,11 +14,11 @@ public class ConexaoBolao {
     private static CallableStatement stmtCall;
     private static boolean autoCommit;
     private static final String porta = "5432";
-    private static final String servidor = "bolao.cacznkwpq5yo.us-east-2.rds.amazonaws.com";
+    private static final String servidor = "bolao.clmal92lfsbr.sa-east-1.rds.amazonaws.com";
     private static final String banco = "bolao";
     private static final String usuario = "bruno";
     private static final String senha = "brunosoad02";
-    private static final String url = "jdbc:postgresql://bolao.cacznkwpq5yo.us-east-2.rds.amazonaws.com/bolao";
+    private static final String url = "jdbc:postgresql://bolao.clmal92lfsbr.sa-east-1.rds.amazonaws.com/bolao";
 
     static {
         try {

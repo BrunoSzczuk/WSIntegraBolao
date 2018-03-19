@@ -1,6 +1,7 @@
 package br.com.wsintegrabolao.dao.obj;
 // Generated 08/03/2018 16:57:58 by Hibernate Tools 4.3.1
 
+import com.google.gson.annotations.Expose;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -16,16 +17,27 @@ import javax.persistence.Table;
 
 public class Equipe implements java.io.Serializable {
 
+    @Expose
     private String cdEquipe;
+    @Expose
     private String brEquipe;
+    @Expose
     private String corEquipe;
+    @Expose
     private String nmEquipe;
+    @Expose
     private String nmComum;
+    @Expose
     private String nmSlug;
+    @Expose
     private String sgEquipe;
+    @Expose
     private String tgEquipe;
+    @Expose
     private String tpEquipe;
+    @Expose
     private String uriEquipe;
+    
 
     public Equipe() {
     }

@@ -21,11 +21,10 @@ import org.hibernate.annotations.Parameter;
          schema = "public"
 )
 public class Classificacaoempate implements java.io.Serializable {
-
-    @Expose
     private String cdEquipe;
 
     private Equipe equipe;
+
     @Expose
     private Integer qtMandante;
     @Expose

@@ -8,7 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
@@ -22,13 +21,12 @@ import org.hibernate.annotations.Parameter;
 @Table(name="classificacaoderrota"
     ,schema="public"
 )
-@NamedQuery(name = "Classificacaoderrota.findByEquipe", query = "SELECT e from Classificacaoderrota e where e.cdEquipe = :cdEquipe")
 public class Classificacaoderrota  implements java.io.Serializable {
 
-    @Expose
     private String cdEquipe;
 
     private Equipe equipe;
+
     @Expose
     private Integer qtMandante;
     @Expose

@@ -22,10 +22,11 @@ import org.hibernate.annotations.Parameter;
 )
 public class Classificacaopg implements java.io.Serializable {
 
-    @Expose
+    
     private String cdEquipe;
 
     private Equipe equipe;
+
     @Expose
     private Integer qtMandante;
     @Expose
