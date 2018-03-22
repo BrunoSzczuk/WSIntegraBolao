@@ -13,6 +13,7 @@ import br.com.wsintegrabolao.dao.obj.Classificacaopg;
 import br.com.wsintegrabolao.dao.obj.Classificacaovitoria;
 import br.com.wsintegrabolao.dao.obj.Equipe;
 import java.sql.ResultSet;
+import java.util.List;
 
 /**
  *
@@ -61,6 +62,10 @@ public class WSIntegraBolaoController {
 
     public static Equipe buscaEquipe(String cdEquipe) {
         return ConexaoDAO.getInstance().getEm().find(Equipe.class, cdEquipe);
+    }
+    
+    public static List<Equipe> buscaEquipeList(){
+        return ConexaoDAO.getInstance().getEm().createQuery("SELECT e FROM Equipe e", Equipe.class).getResultList();
     }
 
     public static Classificacaoderrota buscaClassificacaoderrota(String cdEquipe) {

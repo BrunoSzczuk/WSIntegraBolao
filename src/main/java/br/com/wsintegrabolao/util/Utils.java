@@ -21,7 +21,7 @@ public class Utils {
         try {
             objeto = ConexaoDAO.getInstance().getEm().find(classe, id);
         } catch (NoResultException n) {
-            throw new ExceptionDAO("Não há nenhum registro com esse código");
+            throw new ExceptionDAO("ERRO: Não há nenhum registro com esse código");
         } catch (Exception ex) {
             throw new ExceptionDAO(ex.getMessage());
         }

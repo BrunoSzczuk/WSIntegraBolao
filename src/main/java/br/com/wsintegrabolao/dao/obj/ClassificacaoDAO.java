@@ -21,19 +21,19 @@ import javax.persistence.Table;
 @Table(name = "classificacao")
 public class ClassificacaoDAO implements Serializable {
 
-    @Column(name = "go_pro")
-    @Expose
-    private int golsPro;
-
     @OneToOne(fetch = FetchType.LAZY)
     @PrimaryKeyJoinColumn
-    @Expose
+
     private Equipe equipe;
 
     @Id
     @Column(name = "cd_equipe", insertable = false, updatable = false)
     @Expose
     private String cdEquipe;
+
+    @Column(name = "go_pro")
+    @Expose
+    private int golsPro;
 
     public Equipe getEquipe() {
         return equipe;
@@ -64,13 +64,13 @@ public class ClassificacaoDAO implements Serializable {
     private String pos;
 
     @Column(name = "ga_posicao")
-    @Expose
-    private String ganho_pos;
+    @Expose    
+    private String ganhoPos;
 
     @OneToOne
     @Expose
     @JoinColumn(name = "cd_equipe", referencedColumnName = "cd_equipe", insertable = false, updatable = false)
-    private Classificacaopg pontosGols;
+    private Classificacaopg pontosGanhos;
 
     @ManyToOne
     @Expose
@@ -100,11 +100,11 @@ public class ClassificacaoDAO implements Serializable {
     }
 
     public Classificacaopg getPontosGols() {
-        return pontosGols;
+        return pontosGanhos;
     }
 
-    public void setPontosGols(Classificacaopg pontosGols) {
-        this.pontosGols = pontosGols;
+    public void setPontosGols(Classificacaopg pontosGanhos) {
+        this.pontosGanhos = pontosGanhos;
     }
 
     public Classificacaojogo getJogos() {
@@ -172,11 +172,11 @@ public class ClassificacaoDAO implements Serializable {
     }
 
     public String getGanho_pos() {
-        return ganho_pos;
+        return ganhoPos;
     }
 
-    public void setGanho_pos(String ganho_pos) {
-        this.ganho_pos = ganho_pos;
+    public void setGanho_pos(String ganhoPos) {
+        this.ganhoPos = ganhoPos;
     }
 
     public float getAproveitamento() {
@@ -189,7 +189,7 @@ public class ClassificacaoDAO implements Serializable {
 
     @Override
     public String toString() {
-        return "ClassificacaoDAO{" + "golsPro=" + golsPro + ", equipe=" + equipe + ", golsContra=" + golsContra + ", saldoGols=" + saldoGols + ", pos=" + pos + ", ganho_pos=" + ganho_pos + ", pontosGols=" + pontosGols + ", jogos=" + jogos + ", vitoria=" + vitoria + ", empate=" + empate + ", derrota=" + derrota + ", aproveitamento=" + aproveitamento + '}';
+        return "ClassificacaoDAO{" + "golsPro=" + golsPro + ", equipe=" + equipe + ", golsContra=" + golsContra + ", saldoGols=" + saldoGols + ", pos=" + pos + ", ganhoPos=" + ganhoPos + ", pontosGanhos=" + pontosGanhos + ", jogos=" + jogos + ", vitoria=" + vitoria + ", empate=" + empate + ", derrota=" + derrota + ", aproveitamento=" + aproveitamento + '}';
     }
 
 }

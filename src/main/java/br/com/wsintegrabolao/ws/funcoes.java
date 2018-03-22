@@ -14,6 +14,7 @@ import br.com.wsintegrabolao.exp.ExceptionDAO;
 import br.com.wsintegrabolao.util.Utils;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import java.util.ArrayList;
 import java.util.List;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
@@ -40,15 +41,21 @@ public class funcoes {
         try {
             return Utils.getJsonGenerico(Utils.getGenerico(cdEquipe, Equipe.class), gsonGenerico);
         } catch (ExceptionDAO e) {
-            return "Erro: " + e.getMessage() ;
+            return "Erro: " + e.getMessage();
         }
     }
 
+    /**
+     * Operação de Web service
+     *
+     * @param nrRodada
+     * @return
+     */
     @WebMethod(operationName = "getEquipeList")
     public String getEquipeList() {
         List<Equipe> equipes = null;
         try {
-            equipes = ConexaoDAO.getInstance().getEm().createQuery("SELECT e FROM Equipe e", Equipe.class).getResultList();
+            equipes = WSIntegraBolaoController.buscaEquipeList();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -73,15 +80,31 @@ public class funcoes {
      * Operação de Web service
      *
      * @param id
+     * @return
      */
     @WebMethod(operationName = "getClassificacao")
     public String getClassificacao(@WebParam(name = "id") String id) {
         try {
-            //return Utils.getJsonGenerico(WSIntegraBolaoController.getClassificacao(id), gsonExpose);
-            return gsonExpose.toJson(WSIntegraBolaoController.getClassificacao(id), ClassificacaoDAO.class);
+            return Utils.getJsonGenerico(WSIntegraBolaoController.getClassificacao(id), gsonExpose);
         } catch (Exception e) {
             return e.getMessage();
         }
+    }
+
+    /**
+     * Operação de Web service
+     *
+     * @return
+     */
+    @WebMethod(operationName = "getClassificacaoList")
+    public String getClassificacaoList() {
+        List<ClassificacaoDAO> lista = new ArrayList<>();
+        try {
+            lista = ConexaoDAO.getInstance().getEm().createQuery("SELECT e FROM ClassificacaoDAO e", ClassificacaoDAO.class).getResultList();
+        } catch (Exception e) {
+            return e.getMessage();
+        }
+        return Utils.getJsonGenerico(lista, gsonExpose);
     }
 
 }
