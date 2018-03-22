@@ -5,13 +5,10 @@
  */
 package br.com.wsintegrabolao.ws;
 
-import br.com.wsintegrabolao.dao.ConexaoDAO;
 import br.com.wsintegrabolao.dao.WSIntegraBolaoController;
 import br.com.wsintegrabolao.dao.obj.ClassificacaoDAO;
 import br.com.wsintegrabolao.dao.obj.Equipe;
 import br.com.wsintegrabolao.dao.obj.Jogoid;
-import br.com.wsintegrabolao.dao.obj.Usuario;
-import br.com.wsintegrabolao.exp.ExceptionDAO;
 import br.com.wsintegrabolao.util.Utils;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -28,7 +25,7 @@ import javax.jws.WebParam;
 @WebService(serviceName = "funcoes")
 public class funcoes {
 
-    Gson gsonGenerico = new Gson();
+    Gson gsonGenerico = new GsonBuilder().create();
     Gson gsonExpose = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
 
     /**

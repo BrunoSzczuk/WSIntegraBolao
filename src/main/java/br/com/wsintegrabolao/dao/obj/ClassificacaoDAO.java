@@ -21,7 +21,7 @@ import javax.persistence.Table;
 @Table(name = "classificacao")
 public class ClassificacaoDAO implements Serializable {
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.EAGER)
     @PrimaryKeyJoinColumn
 
     private Equipe equipe;

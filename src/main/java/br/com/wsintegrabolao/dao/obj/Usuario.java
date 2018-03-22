@@ -70,7 +70,7 @@ public class Usuario implements java.io.Serializable {
         this.cdUsuario = cdUsuario;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "cd_tipo", nullable = false)
     public Tipousuario getTipousuario() {
         return this.tipousuario;
@@ -136,7 +136,7 @@ public class Usuario implements java.io.Serializable {
         this.dtCadastro = dtCadastro;
     }
 
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "usuario")
+    @OneToOne(fetch = FetchType.EAGER, mappedBy = "usuario")
     public Posicaousuario getPosicaousuario() {
         return this.posicaousuario;
     }
