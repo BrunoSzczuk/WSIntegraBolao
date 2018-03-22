@@ -29,15 +29,12 @@ public class Utils {
     }
 
     public static String getJsonGenerico(Object obj, Gson gson) {
-        if (obj != null && gson != null) {
-            try {
-                return gson.toJson(obj);
-            } catch (Exception ex) {
-                ex.printStackTrace();
-                return "ERRO: Erro ao gerar Json.";
-            }
+        try {
+            return gson.toJson(obj);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return "ERRO: Erro ao gerar Json. " + ex.getMessage();
         }
-        return "ERRO: Objeto nulo ou vazio.";
     }
 
 }

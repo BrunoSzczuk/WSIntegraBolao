@@ -4,9 +4,9 @@
   <session-factory>
     <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
     <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
-    <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/bolao</property>
-    <property name="hibernate.connection.username">aplicacao</property>
-    <property name="hibernate.connection.password">aplicacao01</property>
+    <property name="hibernate.connection.url">jdbc:postgresql://bolao.clmal92lfsbr.sa-east-1.rds.amazonaws.com:5432/bolao</property>
+    <property name="hibernate.connection.username">bruno</property>
+    <property name="hibernate.connection.password">brunosoad02</property>
     <mapping resource="br/com/wsintegrabolao/dao/obj/Tipousuario.hbm.xml"/>
     <mapping resource="br/com/wsintegrabolao/dao/obj/Classificacao.hbm.xml"/>
     <mapping resource="br/com/wsintegrabolao/dao/obj/Equipe.hbm.xml"/>

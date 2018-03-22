@@ -23,7 +23,6 @@ public class Tipousuario  implements java.io.Serializable {
 
      private int cdTipo;
      private String dsTipo;
-     private Set usuarios = new HashSet(0);
 
     public Tipousuario() {
     }
@@ -36,7 +35,6 @@ public class Tipousuario  implements java.io.Serializable {
     public Tipousuario(int cdTipo, String dsTipo, Set usuarios) {
        this.cdTipo = cdTipo;
        this.dsTipo = dsTipo;
-       this.usuarios = usuarios;
     }
    
      @Id 
@@ -60,16 +58,6 @@ public class Tipousuario  implements java.io.Serializable {
     public void setDsTipo(String dsTipo) {
         this.dsTipo = dsTipo;
     }
-
-@OneToMany(fetch=FetchType.LAZY, mappedBy="tipousuario")
-    public Set getUsuarios() {
-        return this.usuarios;
-    }
-    
-    public void setUsuarios(Set usuarios) {
-        this.usuarios = usuarios;
-    }
-
 
 
 

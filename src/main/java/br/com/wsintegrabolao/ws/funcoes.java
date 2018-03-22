@@ -7,6 +7,7 @@ package br.com.wsintegrabolao.ws;
 
 import br.com.wsintegrabolao.dao.ConexaoDAO;
 import br.com.wsintegrabolao.dao.WSIntegraBolaoController;
+import br.com.wsintegrabolao.dao.obj.ClassificacaoDAO;
 import br.com.wsintegrabolao.dao.obj.Equipe;
 import br.com.wsintegrabolao.dao.obj.Usuario;
 import br.com.wsintegrabolao.exp.ExceptionDAO;
@@ -39,7 +40,7 @@ public class funcoes {
         try {
             return Utils.getJsonGenerico(Utils.getGenerico(cdEquipe, Equipe.class), gsonGenerico);
         } catch (ExceptionDAO e) {
-            return "Erro";
+            return "Erro: " + e.getMessage() ;
         }
     }
 
@@ -76,7 +77,8 @@ public class funcoes {
     @WebMethod(operationName = "getClassificacao")
     public String getClassificacao(@WebParam(name = "id") String id) {
         try {
-            return Utils.getJsonGenerico(WSIntegraBolaoController.getClassificacao(id), gsonExpose);
+            //return Utils.getJsonGenerico(WSIntegraBolaoController.getClassificacao(id), gsonExpose);
+            return gsonExpose.toJson(WSIntegraBolaoController.getClassificacao(id), ClassificacaoDAO.class);
         } catch (Exception e) {
             return e.getMessage();
         }

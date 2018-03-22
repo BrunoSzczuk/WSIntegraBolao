@@ -68,23 +68,6 @@
         <property name="urlVideo" type="string">
             <column name="url_video" />
         </property>
-        <set name="palpiteses" table="palpites" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="cd_jogo" not-null="true" />
-            </key>
-            <one-to-many class="br.com.wsintegrabolao.dao.obj.Palpites" />
-        </set>
-        <set name="datajogoses" table="datajogos" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="cd_jogo" not-null="true" />
-            </key>
-            <one-to-many class="br.com.wsintegrabolao.dao.obj.Datajogos" />
-        </set>
-        <set name="rodadajogoses" table="rodadajogos" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="cd_jogo" not-null="true" />
-            </key>
-            <one-to-many class="br.com.wsintegrabolao.dao.obj.Rodadajogos" />
-        </set>
+
     </class>
 </hibernate-mapping>
