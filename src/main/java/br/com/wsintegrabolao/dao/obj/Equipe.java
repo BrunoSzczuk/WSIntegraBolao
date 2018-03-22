@@ -19,23 +19,23 @@ public class Equipe implements java.io.Serializable {
 
     @Expose
     private String cdEquipe;
-    @Expose
+   
     private String brEquipe;
-    @Expose
+    
     private String corEquipe;
-    @Expose
+   
     private String nmEquipe;
-    @Expose
+    
     private String nmComum;
-    @Expose
+    
     private String nmSlug;
-    @Expose
+    
     private String sgEquipe;
-    @Expose
+    
     private String tgEquipe;
-    @Expose
+    
     private String tpEquipe;
-    @Expose
+    
     private String uriEquipe;
     
 

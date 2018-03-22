@@ -12,6 +12,7 @@ import br.com.wsintegrabolao.dao.obj.Classificacaojogo;
 import br.com.wsintegrabolao.dao.obj.Classificacaopg;
 import br.com.wsintegrabolao.dao.obj.Classificacaovitoria;
 import br.com.wsintegrabolao.dao.obj.Equipe;
+import br.com.wsintegrabolao.dao.obj.Jogoid;
 import java.sql.ResultSet;
 import java.util.List;
 
@@ -21,7 +22,7 @@ import java.util.List;
  */
 public class WSIntegraBolaoController {
 
-    public static ClassificacaoDAO getClassificacao(String cdEquipe) {
+    public static ClassificacaoDAO buscaClassificacao(String cdEquipe) {
         try {
             ResultSet rs = ConexaoBolao.getStatement().executeQuery("select c.*, \n"
                     + "       ce.qt_mandante as qt_mandanteEmpate, ce.qt_visitante as qt_visitanteEmpate, ce.qt_total as qt_totalEmpate,\n"
@@ -52,6 +53,7 @@ public class WSIntegraBolaoController {
                 c.setJogos(buscaClassificacaojogo(c.getCdEquipe()));
                 c.setPontosGols(buscaClassificacaopg(c.getCdEquipe()));
                 c.setVitoria(buscaClassificacaovitoria(c.getCdEquipe()));
+                rs.close();
                 return c;
             }
         } catch (Exception e) {
@@ -60,6 +62,9 @@ public class WSIntegraBolaoController {
         return null;
     }
 
+    public static List<ClassificacaoDAO> buscaClassificacaoList(){
+        return ConexaoDAO.getInstance().getEm().createQuery("SELECT e FROM ClassificacaoDAO e", ClassificacaoDAO.class).getResultList();
+    }
     public static Equipe buscaEquipe(String cdEquipe) {
         return ConexaoDAO.getInstance().getEm().find(Equipe.class, cdEquipe);
     }
@@ -86,6 +91,17 @@ public class WSIntegraBolaoController {
 
     public static Classificacaopg buscaClassificacaopg(String cdEquipe) {
         return ConexaoDAO.getInstance().getEm().createQuery("SELECT e from Classificacaopg e where e.cdEquipe = :cdEquipe", Classificacaopg.class).setParameter("cdEquipe", cdEquipe).getSingleResult();
+    }
+
+    public static Jogoid buscaJogo(int cdJogo) {
+        return ConexaoDAO.getInstance().getEm().find(Jogoid.class,cdJogo);
+    }
+
+    public static List<Jogoid> buscaJogoList(){
+        return ConexaoDAO.getInstance().getEm().createQuery("SELECT e FROM Jogoid e", Jogoid.class).getResultList();
+    }
+    public static List<Jogoid> buscaJogoRodada(String nrRodada) {
+        return ConexaoDAO.getInstance().getEm().createQuery("SELECT e from Jogoid e where e.nrRodada = :nrRodada", Jogoid.class).setParameter("nrRodada", nrRodada).getResultList();
     }
 
 }

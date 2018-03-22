@@ -1,6 +1,7 @@
 package br.com.wsintegrabolao.dao.obj;
 // Generated 08/03/2018 16:57:58 by Hibernate Tools 4.3.1
 
+import com.google.gson.annotations.Expose;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,41 +21,82 @@ import javax.persistence.TemporalType;
 )
 public class Jogoid implements java.io.Serializable {
 
+    @Expose
     private int cdJogo;
-    private Equipe equipeByCdEquipe2;
-    private Equipe equipeByCdEquipe1;
+    
+    @Expose
+    private Equipe cdEquipe2;
+    
+    @Expose
+    private Equipe cdEquipe1;
+    
+    @Expose
     private Boolean stClassificougolsfora;
+    
+    @Expose
     private Date dtJogo;
+    
+    @Expose
     private String dspTime1;
+    
+    @Expose
     private String dspTime2;
+    
+    @Expose
     private Boolean stEliminoujogovolta;
+    
+    @Expose
     private String dsEstadio;
+    
+    @Expose
     private String hrJogo;
+    
+    @Expose
     private String dsLocal;
+    
+    @Expose
     private String nrJogo;
+    
+    @Expose
     private String plPenalti1;
+    
+    @Expose
     private String plPenalti2;
+    
+    @Expose
     private String plTime1;
+    
+    @Expose
     private String plTime2;
+    
+    @Expose
     private String psJogo;
+    
+    @Expose
     private String nrRodada;
+    
+    @Expose
     private String urlPosjogo;
+    
+    @Expose
     private String urlPrejogo;
+    
+    @Expose
     private String urlVideo;
 
     public Jogoid() {
     }
 
-    public Jogoid(int cdJogo, Equipe equipeByCdEquipe2, Equipe equipeByCdEquipe1) {
+    public Jogoid(int cdJogo, Equipe cdEquipe2, Equipe cdEquipe1) {
         this.cdJogo = cdJogo;
-        this.equipeByCdEquipe2 = equipeByCdEquipe2;
-        this.equipeByCdEquipe1 = equipeByCdEquipe1;
+        this.cdEquipe2 = cdEquipe2;
+        this.cdEquipe1 = cdEquipe1;
     }
 
-    public Jogoid(int cdJogo, Equipe equipeByCdEquipe2, Equipe equipeByCdEquipe1, Boolean stClassificougolsfora, Date dtJogo, String dspTime1, String dspTime2, Boolean stEliminoujogovolta, String dsEstadio, String hrJogo, String dsLocal, String nrJogo, String plPenalti1, String plPenalti2, String plTime1, String plTime2, String psJogo, String nrRodada, String urlPosjogo, String urlPrejogo, String urlVideo) {
+    public Jogoid(int cdJogo, Equipe cdEquipe2, Equipe cdEquipe1, Boolean stClassificougolsfora, Date dtJogo, String dspTime1, String dspTime2, Boolean stEliminoujogovolta, String dsEstadio, String hrJogo, String dsLocal, String nrJogo, String plPenalti1, String plPenalti2, String plTime1, String plTime2, String psJogo, String nrRodada, String urlPosjogo, String urlPrejogo, String urlVideo) {
         this.cdJogo = cdJogo;
-        this.equipeByCdEquipe2 = equipeByCdEquipe2;
-        this.equipeByCdEquipe1 = equipeByCdEquipe1;
+        this.cdEquipe2 = cdEquipe2;
+        this.cdEquipe1 = cdEquipe1;
         this.stClassificougolsfora = stClassificougolsfora;
         this.dtJogo = dtJogo;
         this.dspTime1 = dspTime1;
@@ -86,24 +128,24 @@ public class Jogoid implements java.io.Serializable {
         this.cdJogo = cdJogo;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "cd_equipe2", nullable = false)
     public Equipe getEquipeByCdEquipe2() {
-        return this.equipeByCdEquipe2;
+        return this.cdEquipe2;
     }
 
-    public void setEquipeByCdEquipe2(Equipe equipeByCdEquipe2) {
-        this.equipeByCdEquipe2 = equipeByCdEquipe2;
+    public void setEquipeByCdEquipe2(Equipe cdEquipe2) {
+        this.cdEquipe2 = cdEquipe2;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "cd_equipe1", nullable = false)
     public Equipe getEquipeByCdEquipe1() {
-        return this.equipeByCdEquipe1;
+        return this.cdEquipe1;
     }
 
-    public void setEquipeByCdEquipe1(Equipe equipeByCdEquipe1) {
-        this.equipeByCdEquipe1 = equipeByCdEquipe1;
+    public void setEquipeByCdEquipe1(Equipe cdEquipe1) {
+        this.cdEquipe1 = cdEquipe1;
     }
 
     @Column(name = "st_classificougolsfora")

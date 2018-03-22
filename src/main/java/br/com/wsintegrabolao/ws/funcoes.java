@@ -9,6 +9,7 @@ import br.com.wsintegrabolao.dao.ConexaoDAO;
 import br.com.wsintegrabolao.dao.WSIntegraBolaoController;
 import br.com.wsintegrabolao.dao.obj.ClassificacaoDAO;
 import br.com.wsintegrabolao.dao.obj.Equipe;
+import br.com.wsintegrabolao.dao.obj.Jogoid;
 import br.com.wsintegrabolao.dao.obj.Usuario;
 import br.com.wsintegrabolao.exp.ExceptionDAO;
 import br.com.wsintegrabolao.util.Utils;
@@ -39,21 +40,20 @@ public class funcoes {
     @WebMethod(operationName = "getEquipe")
     public String getEquipe(@WebParam(name = "cdEquipe") String cdEquipe) {
         try {
-            return Utils.getJsonGenerico(Utils.getGenerico(cdEquipe, Equipe.class), gsonGenerico);
-        } catch (ExceptionDAO e) {
-            return "Erro: " + e.getMessage();
+            return Utils.getJsonGenerico(WSIntegraBolaoController.buscaEquipe(cdEquipe), gsonGenerico);
+        } catch (Exception e) {
+            return e.getMessage();
         }
     }
 
     /**
      * Operação de Web service
      *
-     * @param nrRodada
      * @return
      */
     @WebMethod(operationName = "getEquipeList")
     public String getEquipeList() {
-        List<Equipe> equipes = null;
+        List<Equipe> equipes = new ArrayList<>();
         try {
             equipes = WSIntegraBolaoController.buscaEquipeList();
         } catch (Exception e) {
@@ -66,26 +66,12 @@ public class funcoes {
      * Operação de Web service
      *
      * @param id
-     */
-    @WebMethod(operationName = "getUsuario")
-    public String getUsuario(@WebParam(name = "id") String id) {
-        try {
-            return Utils.getJsonGenerico(Utils.getGenerico(id, Usuario.class), gsonGenerico);
-        } catch (ExceptionDAO e) {
-            return e.getMessage();
-        }
-    }
-
-    /**
-     * Operação de Web service
-     *
-     * @param id
      * @return
      */
     @WebMethod(operationName = "getClassificacao")
     public String getClassificacao(@WebParam(name = "id") String id) {
         try {
-            return Utils.getJsonGenerico(WSIntegraBolaoController.getClassificacao(id), gsonExpose);
+            return Utils.getJsonGenerico(WSIntegraBolaoController.buscaClassificacao(id), gsonExpose);
         } catch (Exception e) {
             return e.getMessage();
         }
@@ -100,11 +86,56 @@ public class funcoes {
     public String getClassificacaoList() {
         List<ClassificacaoDAO> lista = new ArrayList<>();
         try {
-            lista = ConexaoDAO.getInstance().getEm().createQuery("SELECT e FROM ClassificacaoDAO e", ClassificacaoDAO.class).getResultList();
+            lista = WSIntegraBolaoController.buscaClassificacaoList();
         } catch (Exception e) {
             return e.getMessage();
         }
         return Utils.getJsonGenerico(lista, gsonExpose);
     }
 
+    /**
+     * Operação de Web service
+     */
+    @WebMethod(operationName = "getJogo")
+    public String getJogo(@WebParam(name = "cdJogo") int cdJogo) {
+        try {
+            return Utils.getJsonGenerico(WSIntegraBolaoController.buscaJogo(cdJogo), gsonExpose);
+        } catch (Exception e) {
+            return e.getMessage();
+        }
+    }
+
+    /**
+     * Operação de Web service
+     *
+     * @param nrRodada
+     * @return String
+     */
+    @WebMethod(operationName = "getJogoRodada")
+    public String getJogoRodada(@WebParam(name = "nrRodada") String nrRodada) {
+        List<Jogoid> lista = new ArrayList<>();
+        try {
+            lista = WSIntegraBolaoController.buscaJogoRodada(nrRodada);
+        } catch (Exception e) {
+            return e.getMessage();
+        }
+        return Utils.getJsonGenerico(lista, gsonExpose);
+
+    }
+
+    /**
+     * Operação de Web service
+     */
+    @WebMethod(operationName = "getJogoList")
+    public String getJogoList() {
+        List<Jogoid> lista = new ArrayList<>();
+        try {
+            lista = WSIntegraBolaoController.buscaJogoList();
+        } catch (Exception e) {
+            return e.getMessage();
+        }
+        return Utils.getJsonGenerico(lista, gsonExpose);
+    }
 }
+
+
