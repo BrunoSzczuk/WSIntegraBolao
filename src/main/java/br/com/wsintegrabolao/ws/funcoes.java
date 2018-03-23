@@ -9,6 +9,7 @@ import br.com.wsintegrabolao.dao.WSIntegraBolaoController;
 import br.com.wsintegrabolao.dao.obj.ClassificacaoDAO;
 import br.com.wsintegrabolao.dao.obj.Equipe;
 import br.com.wsintegrabolao.dao.obj.Jogoid;
+import br.com.wsintegrabolao.util.HibernateProxyTypeAdapter;
 import br.com.wsintegrabolao.util.Utils;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -25,8 +26,8 @@ import javax.jws.WebParam;
 @WebService(serviceName = "funcoes")
 public class funcoes {
 
-    Gson gsonGenerico = new GsonBuilder().create();
-    Gson gsonExpose = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+    Gson gsonGenerico = new GsonBuilder().registerTypeAdapterFactory(HibernateProxyTypeAdapter.FACTORY).create();
+    Gson gsonExpose = new GsonBuilder().registerTypeAdapterFactory(HibernateProxyTypeAdapter.FACTORY).excludeFieldsWithoutExposeAnnotation().create();
 
     /**
      * Operação de Web service

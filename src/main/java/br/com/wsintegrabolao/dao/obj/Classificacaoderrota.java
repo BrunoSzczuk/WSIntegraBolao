@@ -60,7 +60,7 @@ public class Classificacaoderrota  implements java.io.Serializable {
         this.cdEquipe = cdEquipe;
     }
 
-@OneToOne(fetch=FetchType.LAZY)@PrimaryKeyJoinColumn
+@OneToOne(fetch=FetchType.EAGER)@PrimaryKeyJoinColumn
     public Equipe getEquipe() {
         return this.equipe;
     }

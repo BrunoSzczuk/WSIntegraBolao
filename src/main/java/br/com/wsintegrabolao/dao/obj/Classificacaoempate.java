@@ -59,7 +59,7 @@ public class Classificacaoempate implements java.io.Serializable {
         this.cdEquipe = cdEquipe;
     }
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.EAGER)
     @PrimaryKeyJoinColumn
     public Equipe getEquipe() {
         return this.equipe;
