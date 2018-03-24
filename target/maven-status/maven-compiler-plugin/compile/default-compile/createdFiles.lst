@@ -1,9 +1,11 @@
 br\com\wsintegrabolao\dao\obj\RodadajogosId_.class
 br\com\wsintegrabolao\dao\obj\Equipe.class
 br\com\wsintegrabolao\dao\obj\Sugestao_.class
+br\com\wsintegrabolao\util\HibernateProxyTypeAdapter$1.class
 br\com\wsintegrabolao\dao\obj\Classificacaoderrota.class
 br\com\wsintegrabolao\dao\obj\Schedule_.class
 br\com\wsintegrabolao\util\Utils.class
+br\com\wsintegrabolao\util\HibernateProxyTypeAdapter.class
 br\com\wsintegrabolao\dao\obj\Rodadajogos.class
 br\com\wsintegrabolao\dao\obj\Usuario_.class
 br\com\wsintegrabolao\dao\obj\Palpites_.class

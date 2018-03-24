@@ -1,3 +1,4 @@
+D:\projetos\Bruno\WSIntegraBolao\src\main\java\org\netbeans\rest\application\config\ApplicationConfig.java
 D:\projetos\Bruno\WSIntegraBolao\src\main\java\br\com\wsintegrabolao\dao\WSIntegraBolaoController.java
 D:\projetos\Bruno\WSIntegraBolao\src\main\java\br\com\wsintegrabolao\dao\obj\DatajogosId.java
 D:\projetos\Bruno\WSIntegraBolao\src\main\java\br\com\wsintegrabolao\dao\obj\RodadajogosId.java
@@ -9,16 +10,19 @@ D:\projetos\Bruno\WSIntegraBolao\src\main\java\br\com\wsintegrabolao\dao\obj\Cla
 D:\projetos\Bruno\WSIntegraBolao\src\main\java\br\com\wsintegrabolao\dao\obj\Classificacaopg.java
 D:\projetos\Bruno\WSIntegraBolao\src\main\java\br\com\wsintegrabolao\dao\obj\Jogoid.java
 D:\projetos\Bruno\WSIntegraBolao\src\main\java\br\com\wsintegrabolao\dao\ConexaoDAO.java
+D:\projetos\Bruno\WSIntegraBolao\src\main\java\br\com\wsintegrabolao\util\HibernateProxyTypeAdapter.java
 D:\projetos\Bruno\WSIntegraBolao\src\main\java\br\com\wsintegrabolao\dao\obj\Datajogos.java
 D:\projetos\Bruno\WSIntegraBolao\src\main\java\br\com\wsintegrabolao\dao\obj\Classificacaojogo.java
 D:\projetos\Bruno\WSIntegraBolao\src\main\java\br\com\wsintegrabolao\dao\obj\Classificacaovitoria.java
 D:\projetos\Bruno\WSIntegraBolao\src\main\java\br\com\wsintegrabolao\dao\obj\Equipe.java
 D:\projetos\Bruno\WSIntegraBolao\src\main\java\br\com\wsintegrabolao\exp\ExceptionDAO.java
 D:\projetos\Bruno\WSIntegraBolao\src\main\java\br\com\wsintegrabolao\util\Utils.java
+D:\projetos\Bruno\WSIntegraBolao\src\main\java\br\com\wsintegrabolao\ws\bolao.java
 D:\projetos\Bruno\WSIntegraBolao\src\main\java\br\com\wsintegrabolao\dao\obj\Classificacaoderrota.java
 D:\projetos\Bruno\WSIntegraBolao\src\main\java\br\com\wsintegrabolao\dao\obj\ClassificacaoDAO.java
 D:\projetos\Bruno\WSIntegraBolao\src\main\java\br\com\wsintegrabolao\dao\obj\Schedule.java
 D:\projetos\Bruno\WSIntegraBolao\src\main\java\br\com\wsintegrabolao\ws\funcoes.java
+D:\projetos\Bruno\WSIntegraBolao\src\main\java\br\com\wsintegrabolao\dto\validator\Validator.java
 D:\projetos\Bruno\WSIntegraBolao\src\main\java\br\com\wsintegrabolao\dao\obj\Rodadajogos.java
 D:\projetos\Bruno\WSIntegraBolao\src\main\java\br\com\wsintegrabolao\dao\obj\Sugestao.java
 D:\projetos\Bruno\WSIntegraBolao\src\main\java\br\com\wsintegrabolao\dao\obj\Tipousuario.java

@@ -29,6 +29,9 @@ public class Utils {
     }
 
     public static String getJsonGenerico(Object obj, Gson gson) {
+        if (obj == null) {
+            return "ERRO: Objeto não encontrado";
+        }
         try {
             return gson.toJson(obj);
         } catch (Exception ex) {

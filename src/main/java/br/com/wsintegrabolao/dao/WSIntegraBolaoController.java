@@ -13,6 +13,7 @@ import br.com.wsintegrabolao.dao.obj.Classificacaopg;
 import br.com.wsintegrabolao.dao.obj.Classificacaovitoria;
 import br.com.wsintegrabolao.dao.obj.Equipe;
 import br.com.wsintegrabolao.dao.obj.Jogoid;
+import br.com.wsintegrabolao.dao.obj.Usuario;
 import java.sql.ResultSet;
 import java.util.List;
 
@@ -102,6 +103,9 @@ public class WSIntegraBolaoController {
     }
     public static List<Jogoid> buscaJogoRodada(String nrRodada) {
         return ConexaoDAO.getInstance().getEm().createQuery("SELECT e from Jogoid e where e.nrRodada = :nrRodada", Jogoid.class).setParameter("nrRodada", nrRodada).getResultList();
+    }
+    public static Usuario buscaUsuario(String cdUsuario){
+        return ConexaoDAO.getInstance().getEm().find(Usuario.class, cdUsuario);
     }
 
 }

@@ -26,8 +26,8 @@ import javax.jws.WebParam;
 @WebService(serviceName = "funcoes")
 public class funcoes {
 
-    Gson gsonGenerico = new GsonBuilder().registerTypeAdapterFactory(HibernateProxyTypeAdapter.FACTORY).create();
-    Gson gsonExpose = new GsonBuilder().registerTypeAdapterFactory(HibernateProxyTypeAdapter.FACTORY).excludeFieldsWithoutExposeAnnotation().create();
+    Gson gsonGenerico = new GsonBuilder().registerTypeAdapterFactory(HibernateProxyTypeAdapter.FACTORY).setDateFormat("yyyy-MM-dd").create();
+    Gson gsonExpose = new GsonBuilder().registerTypeAdapterFactory(HibernateProxyTypeAdapter.FACTORY).setDateFormat("yyyy-MM-dd").excludeFieldsWithoutExposeAnnotation().create();
 
     /**
      * Operação de Web service

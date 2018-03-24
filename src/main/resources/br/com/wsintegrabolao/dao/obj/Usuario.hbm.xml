@@ -5,7 +5,7 @@
 <hibernate-mapping>
     <class name="br.com.wsintegrabolao.dao.obj.Usuario" table="usuario" schema="public" optimistic-lock="version">
         <id name="cdUsuario" type="string">
-            <column name="cd_usuario" length="10" />
+            <column name="cd_usuario" length="20" />
             <generator class="assigned" />
         </id>
         <many-to-one name="tipousuario" class="br.com.wsintegrabolao.dao.obj.Tipousuario" fetch="select">
