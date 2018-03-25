@@ -1,5 +1,5 @@
 package br.com.wsintegrabolao.dao.obj;
-// Generated 08/03/2018 16:57:58 by Hibernate Tools 4.3.1
+// Generated 25/03/2018 00:53:08 by Hibernate Tools 3.6.0
 
 
 import javax.persistence.Column;
@@ -24,7 +24,7 @@ public class Classificacao  implements java.io.Serializable {
 
 
      private String cdEquipe;
-     private Equipe equipe;
+     private EquipeDAO equipe;
      private Float pcAproveitamento;
      private String gaPosicao;
      private Integer goContra;
@@ -36,10 +36,10 @@ public class Classificacao  implements java.io.Serializable {
     }
 
 	
-    public Classificacao(Equipe equipe) {
+    public Classificacao(EquipeDAO equipe) {
         this.equipe = equipe;
     }
-    public Classificacao(Equipe equipe, Float pcAproveitamento, String gaPosicao, Integer goContra, Integer goPro, String psEquipe, Integer sdGols) {
+    public Classificacao(EquipeDAO equipe, Float pcAproveitamento, String gaPosicao, Integer goContra, Integer goPro, String psEquipe, Integer sdGols) {
        this.equipe = equipe;
        this.pcAproveitamento = pcAproveitamento;
        this.gaPosicao = gaPosicao;
@@ -62,11 +62,11 @@ public class Classificacao  implements java.io.Serializable {
     }
 
 @OneToOne(fetch=FetchType.LAZY)@PrimaryKeyJoinColumn
-    public Equipe getEquipe() {
+    public EquipeDAO getEquipe() {
         return this.equipe;
     }
     
-    public void setEquipe(Equipe equipe) {
+    public void setEquipe(EquipeDAO equipe) {
         this.equipe = equipe;
     }
 

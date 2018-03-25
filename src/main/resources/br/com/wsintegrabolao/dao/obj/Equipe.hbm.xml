@@ -1,94 +1,43 @@
-<?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC 
-	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-
-<!-- Generated 08/03/2018 16:57:59 by Hibernate Tools 4.3.1 -->
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 25/03/2018 00:53:08 by Hibernate Tools 3.6.0 -->
 <hibernate-mapping>
-
-<class
-    name="br.com.wsintegrabolao.dao.obj.Equipe"
-    table="equipe"
-    schema="public"
-    optimistic-lock="version"
->
-
-	<id 
-        name="cdEquipe"
-        type="string"
-    >
-    
-<column name="cd_equipe" length="10" />
-	    <generator class="assigned" />
+  <class name="br.com.wsintegrabolao.dao.obj.EquipeDAO" schema="public" table="equipe">
+    <id name="cdEquipe" type="string">
+      <column length="10" name="cd_equipe"/>
+      <generator class="assigned"/>
     </id>
-
-
-
-
-    <property
-        name="brEquipe"
-	    type="string"
-    >
-<column name="br_equipe" length="100" />
-  </property>
-
-    <property
-        name="corEquipe"
-	    type="string"
-    >
-<column name="cor_equipe" length="100" />
-  </property>
-
-    <property
-        name="nmEquipe"
-	    type="string"
-    >
-<column name="nm_equipe" length="100" />
-  </property>
-
-    <property
-        name="nmComum"
-	    type="string"
-    >
-<column name="nm_comum" length="100" />
-  </property>
-
-    <property
-        name="nmSlug"
-	    type="string"
-    >
-<column name="nm_slug" length="100" />
-  </property>
-
-    <property
-        name="sgEquipe"
-	    type="string"
-    >
-<column name="sg_equipe" length="10" />
-  </property>
-
-    <property
-        name="tgEquipe"
-	    type="string"
-    >
-<column name="tg_equipe" length="100" />
-  </property>
-
-    <property
-        name="tpEquipe"
-	    type="string"
-    >
-<column name="tp_equipe" length="100" />
-  </property>
-
-    <property
-        name="uriEquipe"
-	    type="string"
-    >
-<column name="uri_equipe" length="100" />
-  </property>
-
-
-</class>
-
+    <property name="brEquipe" type="string">
+      <column length="100" name="br_equipe"/>
+    </property>
+    <property name="corEquipe" type="string">
+      <column length="100" name="cor_equipe"/>
+    </property>
+    <property name="nmEquipe" type="string">
+      <column length="100" name="nm_equipe"/>
+    </property>
+    <property name="nmComum" type="string">
+      <column length="100" name="nm_comum"/>
+    </property>
+    <property name="nmSlug" type="string">
+      <column length="100" name="nm_slug"/>
+    </property>
+    <property name="sgEquipe" type="string">
+      <column length="10" name="sg_equipe"/>
+    </property>
+    <property name="tgEquipe" type="string">
+      <column length="100" name="tg_equipe"/>
+    </property>
+    <property name="tpEquipe" type="string">
+      <column length="100" name="tp_equipe"/>
+    </property>
+    <property name="uriEquipe" type="string">
+      <column length="100" name="uri_equipe"/>
+    </property>
+    <one-to-one class="br.com.wsintegrabolao.dao.obj.Classificacao" name="classificacao"/>
+    <one-to-one class="br.com.wsintegrabolao.dao.obj.Classificacaopg" name="classificacaopg"/>
+    <one-to-one class="br.com.wsintegrabolao.dao.obj.Classificacaojogo" name="classificacaojogo"/>
+    <one-to-one class="br.com.wsintegrabolao.dao.obj.Classificacaoempate" name="classificacaoempate"/>
+    <one-to-one class="br.com.wsintegrabolao.dao.obj.Classificacaovitoria" name="classificacaovitoria"/>
+  </class>
 </hibernate-mapping>

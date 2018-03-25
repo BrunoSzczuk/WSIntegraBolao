@@ -1,5 +1,5 @@
 package br.com.wsintegrabolao.dao.obj;
-// Generated 08/03/2018 16:57:58 by Hibernate Tools 4.3.1
+// Generated 25/03/2018 00:53:08 by Hibernate Tools 3.6.0
 
 
 import javax.persistence.Column;
@@ -45,7 +45,7 @@ public class Posicaousuario  implements java.io.Serializable {
      @GenericGenerator(name="generator", strategy="foreign", parameters=@Parameter(name="property", value="usuario"))@Id @GeneratedValue(generator="generator")
 
     
-    @Column(name="cd_usuario", nullable=false, length=10)
+    @Column(name="cd_usuario", nullable=false, length=20)
     public String getCdUsuario() {
         return this.cdUsuario;
     }

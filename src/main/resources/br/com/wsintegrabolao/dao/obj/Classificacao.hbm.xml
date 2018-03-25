@@ -1,33 +1,32 @@
-<?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 08/03/2018 16:57:59 by Hibernate Tools 4.3.1 -->
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 25/03/2018 00:53:08 by Hibernate Tools 3.6.0 -->
 <hibernate-mapping>
-    <class name="br.com.wsintegrabolao.dao.obj.Classificacao" table="classificacao" schema="public" optimistic-lock="version">
-        <id name="cdEquipe" type="string">
-            <column name="cd_equipe" length="10" />
-            <generator class="foreign">
-                <param name="property">equipe</param>
-            </generator>
-        </id>
-        <one-to-one name="equipe" class="br.com.wsintegrabolao.dao.obj.Equipe" constrained="true"></one-to-one>
-        <property name="pcAproveitamento" type="java.lang.Float">
-            <column name="pc_aproveitamento" precision="8" scale="8" />
-        </property>
-        <property name="gaPosicao" type="string">
-            <column name="ga_posicao" length="3" />
-        </property>
-        <property name="goContra" type="java.lang.Integer">
-            <column name="go_contra" />
-        </property>
-        <property name="goPro" type="java.lang.Integer">
-            <column name="go_pro" />
-        </property>
-        <property name="psEquipe" type="string">
-            <column name="ps_equipe" length="3" />
-        </property>
-        <property name="sdGols" type="java.lang.Integer">
-            <column name="sd_gols" />
-        </property>
-    </class>
+  <class name="br.com.wsintegrabolao.dao.obj.Classificacao" schema="public" table="classificacao">
+    <id name="cdEquipe" type="string">
+      <column length="10" name="cd_equipe"/>
+      <generator class="foreign">
+        <param name="property">equipe</param>
+      </generator>
+    </id>
+    <one-to-one class="br.com.wsintegrabolao.dao.obj.EquipeDAO" constrained="true" name="equipe"/>
+    <property name="pcAproveitamento" type="java.lang.Float">
+      <column name="pc_aproveitamento" precision="8" scale="8"/>
+    </property>
+    <property name="gaPosicao" type="string">
+      <column length="3" name="ga_posicao"/>
+    </property>
+    <property name="goContra" type="java.lang.Integer">
+      <column name="go_contra"/>
+    </property>
+    <property name="goPro" type="java.lang.Integer">
+      <column name="go_pro"/>
+    </property>
+    <property name="psEquipe" type="string">
+      <column length="3" name="ps_equipe"/>
+    </property>
+    <property name="sdGols" type="java.lang.Integer">
+      <column name="sd_gols"/>
+    </property>
+  </class>
 </hibernate-mapping>

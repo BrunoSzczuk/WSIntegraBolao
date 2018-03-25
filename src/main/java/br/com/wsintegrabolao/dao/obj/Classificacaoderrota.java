@@ -1,8 +1,7 @@
 package br.com.wsintegrabolao.dao.obj;
-// Generated 08/03/2018 16:57:58 by Hibernate Tools 4.3.1
+// Generated 25/03/2018 00:53:08 by Hibernate Tools 3.6.0
 
 
-import com.google.gson.annotations.Expose;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -23,25 +22,21 @@ import org.hibernate.annotations.Parameter;
 )
 public class Classificacaoderrota  implements java.io.Serializable {
 
-    private String cdEquipe;
 
-    private Equipe equipe;
-
-    @Expose
-    private Integer qtMandante;
-    @Expose
-    private Integer qtTotal;
-    @Expose
-    private Integer qtVisitante;
+     private String cdEquipe;
+     private EquipeDAO equipe;
+     private Integer qtMandante;
+     private Integer qtTotal;
+     private Integer qtVisitante;
 
     public Classificacaoderrota() {
     }
 
 	
-    public Classificacaoderrota(Equipe equipe) {
+    public Classificacaoderrota(EquipeDAO equipe) {
         this.equipe = equipe;
     }
-    public Classificacaoderrota(Equipe equipe, Integer qtMandante, Integer qtTotal, Integer qtVisitante) {
+    public Classificacaoderrota(EquipeDAO equipe, Integer qtMandante, Integer qtTotal, Integer qtVisitante) {
        this.equipe = equipe;
        this.qtMandante = qtMandante;
        this.qtTotal = qtTotal;
@@ -61,11 +56,11 @@ public class Classificacaoderrota  implements java.io.Serializable {
     }
 
 @OneToOne(fetch=FetchType.EAGER)@PrimaryKeyJoinColumn
-    public Equipe getEquipe() {
+    public EquipeDAO getEquipe() {
         return this.equipe;
     }
     
-    public void setEquipe(Equipe equipe) {
+    public void setEquipe(EquipeDAO equipe) {
         this.equipe = equipe;
     }
 

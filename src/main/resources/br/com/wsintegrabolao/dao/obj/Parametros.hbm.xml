@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 08/03/2018 16:57:59 by Hibernate Tools 4.3.1 -->
+<!-- Generated 25/03/2018 00:53:08 by Hibernate Tools 3.6.0 -->
 <hibernate-mapping>
-    <class name="br.com.wsintegrabolao.dao.obj.Parametros" table="parametros" schema="public" optimistic-lock="version">
+    <class name="br.com.wsintegrabolao.dao.obj.Parametros" table="parametros" schema="public">
         <id name="cdParametro" type="int">
             <column name="cd_parametro" />
             <generator class="assigned" />

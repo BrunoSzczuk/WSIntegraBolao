@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 25/03/2018 00:53:08 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="br.com.wsintegrabolao.dao.obj.Bolaousuario" table="bolaousuario" schema="public">
+        <composite-id name="id" class="br.com.wsintegrabolao.dao.obj.BolaousuarioId">
+            <key-property name="cdBolao" type="long">
+                <column name="cd_bolao" />
+            </key-property>
+            <key-property name="cdUsuario" type="string">
+                <column name="cd_usuario" length="20" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="usuario" class="br.com.wsintegrabolao.dao.obj.Usuario" update="false" insert="false" fetch="select">
+            <column name="cd_usuario" length="20" not-null="true" />
+        </many-to-one>
+        <many-to-one name="bolao" class="br.com.wsintegrabolao.dao.obj.Bolao" update="false" insert="false" fetch="select">
+            <column name="cd_bolao" not-null="true" />
+        </many-to-one>
+        <property name="dtInsercao" type="timestamp">
+            <column name="dt_insercao" length="29" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

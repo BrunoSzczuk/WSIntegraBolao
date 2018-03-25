@@ -7,9 +7,12 @@ package br.com.wsintegrabolao.ws;
 
 import br.com.wsintegrabolao.dao.WSIntegraBolaoController;
 import br.com.wsintegrabolao.dao.obj.ClassificacaoDAO;
-import br.com.wsintegrabolao.dao.obj.Equipe;
+import br.com.wsintegrabolao.dao.obj.EquipeDAO;
 import br.com.wsintegrabolao.dao.obj.Jogoid;
 import br.com.wsintegrabolao.dto.HibernateProxyTypeAdapter;
+import br.com.wsintegrabolao.dto.funcoes.EquipeDTO;
+import br.com.wsintegrabolao.dto.funcoes.JogoidDTO;
+import br.com.wsintegrabolao.dto.funcoes.classificacao.ClassificacaoDTO;
 import br.com.wsintegrabolao.util.Utils;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -38,7 +41,7 @@ public class funcoes {
     @WebMethod(operationName = "getEquipe")
     public String getEquipe(@WebParam(name = "cdEquipe") String cdEquipe) {
         try {
-            return Utils.getJsonGenerico(WSIntegraBolaoController.buscaEquipe(cdEquipe), gsonGenerico);
+            return Utils.getJsonGenerico(new EquipeDTO(WSIntegraBolaoController.buscaEquipe(cdEquipe)), gsonGenerico);
         } catch (Exception e) {
             return e.getMessage();
         }
@@ -51,9 +54,11 @@ public class funcoes {
      */
     @WebMethod(operationName = "getEquipeList")
     public String getEquipeList() {
-        List<Equipe> equipes = new ArrayList<>();
+        List<EquipeDTO> equipes = new ArrayList<>();
         try {
-            equipes = WSIntegraBolaoController.buscaEquipeList();
+            for (EquipeDAO e : WSIntegraBolaoController.buscaEquipeList()) {
+                equipes.add(new EquipeDTO(e));
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -69,7 +74,7 @@ public class funcoes {
     @WebMethod(operationName = "getClassificacao")
     public String getClassificacao(@WebParam(name = "id") String id) {
         try {
-            return Utils.getJsonGenerico(WSIntegraBolaoController.buscaClassificacao(id), gsonExpose);
+            return Utils.getJsonGenerico(new ClassificacaoDTO(WSIntegraBolaoController.buscaClassificacao(id)), gsonExpose);
         } catch (Exception e) {
             return e.getMessage();
         }
@@ -82,9 +87,11 @@ public class funcoes {
      */
     @WebMethod(operationName = "getClassificacaoList")
     public String getClassificacaoList() {
-        List<ClassificacaoDAO> lista = new ArrayList<>();
+        List<ClassificacaoDTO> lista = new ArrayList<>();
         try {
-            lista = WSIntegraBolaoController.buscaClassificacaoList();
+            for (ClassificacaoDAO c : WSIntegraBolaoController.buscaClassificacaoList()) {
+                lista.add(new ClassificacaoDTO(c));
+            }
         } catch (Exception e) {
             return e.getMessage();
         }
@@ -97,7 +104,7 @@ public class funcoes {
     @WebMethod(operationName = "getJogo")
     public String getJogo(@WebParam(name = "cdJogo") int cdJogo) {
         try {
-            return Utils.getJsonGenerico(WSIntegraBolaoController.buscaJogo(cdJogo), gsonExpose);
+            return Utils.getJsonGenerico(new JogoidDTO(WSIntegraBolaoController.buscaJogo(cdJogo)), gsonExpose);
         } catch (Exception e) {
             return e.getMessage();
         }
@@ -111,9 +118,11 @@ public class funcoes {
      */
     @WebMethod(operationName = "getJogoRodada")
     public String getJogoRodada(@WebParam(name = "nrRodada") String nrRodada) {
-        List<Jogoid> lista = new ArrayList<>();
+        List<JogoidDTO> lista = new ArrayList<>();
         try {
-            lista = WSIntegraBolaoController.buscaJogoRodada(nrRodada);
+            for (Jogoid j : WSIntegraBolaoController.buscaJogoRodada(nrRodada)){
+                lista.add(new JogoidDTO(j));
+            }
         } catch (Exception e) {
             return e.getMessage();
         }
@@ -126,14 +135,14 @@ public class funcoes {
      */
     @WebMethod(operationName = "getJogoList")
     public String getJogoList() {
-        List<Jogoid> lista = new ArrayList<>();
+        List<JogoidDTO> lista = new ArrayList<>();
         try {
-            lista = WSIntegraBolaoController.buscaJogoList();
+            for (Jogoid j : WSIntegraBolaoController.buscaJogoList()){
+                lista.add(new JogoidDTO(j));
+            }
         } catch (Exception e) {
             return e.getMessage();
         }
         return Utils.getJsonGenerico(lista, gsonExpose);
     }
 }
-
-

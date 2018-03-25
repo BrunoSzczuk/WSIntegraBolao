@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 25/03/2018 00:53:08 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="br.com.wsintegrabolao.dao.obj.Erro" table="erro" schema="public">
+        <id name="cdErro" type="int">
+            <column name="cd_erro" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="usuario" class="br.com.wsintegrabolao.dao.obj.Usuario" fetch="select">
+            <column name="cd_usuario" length="20" not-null="true" />
+        </many-to-one>
+        <property name="dtErro" type="date">
+            <column name="dt_erro" length="13" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

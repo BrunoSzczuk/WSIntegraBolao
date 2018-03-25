@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 08/03/2018 16:57:59 by Hibernate Tools 4.3.1 -->
+<!-- Generated 25/03/2018 00:53:08 by Hibernate Tools 3.6.0 -->
 <hibernate-mapping>
-    <class name="br.com.wsintegrabolao.dao.obj.Usuario" table="usuario" schema="public" optimistic-lock="version">
+    <class name="br.com.wsintegrabolao.dao.obj.Usuario" table="usuario" schema="public">
         <id name="cdUsuario" type="string">
             <column name="cd_usuario" length="20" />
             <generator class="assigned" />
@@ -11,6 +11,9 @@
         <many-to-one name="tipousuario" class="br.com.wsintegrabolao.dao.obj.Tipousuario" fetch="select">
             <column name="cd_tipo" not-null="true" />
         </many-to-one>
+        <property name="stAtivo" type="boolean">
+            <column name="st_ativo" not-null="true" />
+        </property>
         <property name="nmUsuario" type="string">
             <column name="nm_usuario" length="100" not-null="true" />
         </property>
@@ -29,6 +32,8 @@
         <property name="dtCadastro" type="timestamp">
             <column name="dt_cadastro" length="29" not-null="true" />
         </property>
-
+       
+        <one-to-one name="posicaousuario" class="br.com.wsintegrabolao.dao.obj.Posicaousuario"></one-to-one>
+       
     </class>
 </hibernate-mapping>

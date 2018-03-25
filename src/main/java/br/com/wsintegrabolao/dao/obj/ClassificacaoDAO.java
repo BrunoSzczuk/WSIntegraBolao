@@ -24,7 +24,7 @@ public class ClassificacaoDAO implements Serializable {
     @OneToOne(fetch = FetchType.EAGER)
     @PrimaryKeyJoinColumn
 
-    private Equipe equipe;
+    private EquipeDAO equipe;
 
     @Id
     @Column(name = "cd_equipe", insertable = false, updatable = false)
@@ -35,7 +35,7 @@ public class ClassificacaoDAO implements Serializable {
     @Expose
     private int golsPro;
 
-    public Equipe getEquipe() {
+    public EquipeDAO getEquipe() {
         return equipe;
     }
 
@@ -47,7 +47,7 @@ public class ClassificacaoDAO implements Serializable {
         this.cdEquipe = cdEquipe;
     }
 
-    public void setEquipe(Equipe equipe) {
+    public void setEquipe(EquipeDAO equipe) {
         this.equipe = equipe;
     }
 

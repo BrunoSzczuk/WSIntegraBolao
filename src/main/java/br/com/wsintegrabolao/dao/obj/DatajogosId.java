@@ -1,5 +1,5 @@
 package br.com.wsintegrabolao.dao.obj;
-// Generated 08/03/2018 16:57:58 by Hibernate Tools 4.3.1
+// Generated 25/03/2018 00:53:08 by Hibernate Tools 3.6.0
 
 
 import java.util.Date;

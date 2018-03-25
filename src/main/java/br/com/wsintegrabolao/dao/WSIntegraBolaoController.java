@@ -11,7 +11,7 @@ import br.com.wsintegrabolao.dao.obj.Classificacaoempate;
 import br.com.wsintegrabolao.dao.obj.Classificacaojogo;
 import br.com.wsintegrabolao.dao.obj.Classificacaopg;
 import br.com.wsintegrabolao.dao.obj.Classificacaovitoria;
-import br.com.wsintegrabolao.dao.obj.Equipe;
+import br.com.wsintegrabolao.dao.obj.EquipeDAO;
 import br.com.wsintegrabolao.dao.obj.Jogoid;
 import br.com.wsintegrabolao.dao.obj.Tipousuario;
 import br.com.wsintegrabolao.dao.obj.Usuario;
@@ -41,7 +41,7 @@ public class WSIntegraBolaoController {
                     + " inner join classificacaojogo as cj on (cj.cd_equipe = c.cd_equipe)\n"
                     + " where c.cd_equipe = '" + cdEquipe + "' ");
             while (rs.next()) {
-                Equipe e = buscaEquipe(rs.getString("cd_equipe"));
+                EquipeDAO e = buscaEquipe(rs.getString("cd_equipe"));
                 ClassificacaoDAO c = new ClassificacaoDAO();
                 c.setCdEquipe(rs.getString("cd_equipe"));
                 c.setEquipe(e);
@@ -66,15 +66,15 @@ public class WSIntegraBolaoController {
     }
 
     public static List<ClassificacaoDAO> buscaClassificacaoList() {
-        return ConexaoDAO.getInstance().getEm().createQuery("SELECT e FROM ClassificacaoDAO e", ClassificacaoDAO.class).getResultList();
+        return buscaListGenerico(ClassificacaoDAO.class);
     }
 
-    public static Equipe buscaEquipe(String cdEquipe) {
-        return ConexaoDAO.getInstance().getEm().find(Equipe.class, cdEquipe);
+    public static EquipeDAO buscaEquipe(String cdEquipe) {
+        return ConexaoDAO.getInstance().getEm().find(EquipeDAO.class, cdEquipe);
     }
 
-    public static List<Equipe> buscaEquipeList() {
-        return (List<Equipe>)buscaListGenerico(Equipe.class);
+    public static List<EquipeDAO> buscaEquipeList() {
+        return (List<EquipeDAO>)buscaListGenerico(EquipeDAO.class);
     }
 
     public static Classificacaoderrota buscaClassificacaoderrota(String cdEquipe) {

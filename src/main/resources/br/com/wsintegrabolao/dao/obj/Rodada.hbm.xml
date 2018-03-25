@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 25/03/2018 00:53:08 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="br.com.wsintegrabolao.dao.obj.Rodada" table="rodada" schema="public">
+        <id name="cdRodada" type="int">
+            <column name="cd_rodada" />
+            <generator class="assigned" />
+        </id>
+       
+    </class>
+</hibernate-mapping>

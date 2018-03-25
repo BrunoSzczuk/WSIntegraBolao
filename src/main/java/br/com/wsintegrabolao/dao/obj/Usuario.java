@@ -1,8 +1,9 @@
 package br.com.wsintegrabolao.dao.obj;
-// Generated 08/03/2018 16:57:58 by Hibernate Tools 4.3.1
+// Generated 25/03/2018 00:53:08 by Hibernate Tools 3.6.0
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +11,7 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -25,6 +27,7 @@ public class Usuario implements java.io.Serializable {
 
     private String cdUsuario;
     private Tipousuario tipousuario;
+    private boolean stAtivo;
     private String nmUsuario;
     private String snUsuario;
     private String dsEmail;
@@ -36,18 +39,20 @@ public class Usuario implements java.io.Serializable {
     public Usuario() {
     }
 
-    public Usuario(String cdUsuario, Tipousuario tipousuario, String nmUsuario, String snUsuario, String dsEmail, Date dtCadastro) {
+    public Usuario(String cdUsuario, Tipousuario tipousuario, boolean stAtivo, String nmUsuario, String snUsuario, String dsEmail, Date dtCadastro) {
         this.cdUsuario = cdUsuario;
         this.tipousuario = tipousuario;
+        this.stAtivo = stAtivo;
         this.nmUsuario = nmUsuario;
         this.snUsuario = snUsuario;
         this.dsEmail = dsEmail;
         this.dtCadastro = dtCadastro;
     }
 
-    public Usuario(String cdUsuario, Tipousuario tipousuario, String nmUsuario, String snUsuario, String dsEmail, BigDecimal nrPontuacao, Date dtNascimento, Date dtCadastro, Set acessos, Set palpiteses, Posicaousuario posicaousuario, Set sugestaos) {
+    public Usuario(String cdUsuario, Tipousuario tipousuario, boolean stAtivo, String nmUsuario, String snUsuario, String dsEmail, BigDecimal nrPontuacao, Date dtNascimento, Date dtCadastro, Set acessos, Set estatisticausuarios, Posicaousuario posicaousuario, Set palpites, Set bolaos, Set sugestaos, Set bolaousuarios, Set erros) {
         this.cdUsuario = cdUsuario;
         this.tipousuario = tipousuario;
+        this.stAtivo = stAtivo;
         this.nmUsuario = nmUsuario;
         this.snUsuario = snUsuario;
         this.dsEmail = dsEmail;
@@ -68,7 +73,7 @@ public class Usuario implements java.io.Serializable {
         this.cdUsuario = cdUsuario;
     }
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cd_tipo", nullable = false)
     public Tipousuario getTipousuario() {
         return this.tipousuario;
@@ -76,6 +81,15 @@ public class Usuario implements java.io.Serializable {
 
     public void setTipousuario(Tipousuario tipousuario) {
         this.tipousuario = tipousuario;
+    }
+
+    @Column(name = "st_ativo", nullable = false)
+    public boolean isStAtivo() {
+        return this.stAtivo;
+    }
+
+    public void setStAtivo(boolean stAtivo) {
+        this.stAtivo = stAtivo;
     }
 
     @Column(name = "nm_usuario", nullable = false, length = 100)
@@ -134,7 +148,7 @@ public class Usuario implements java.io.Serializable {
         this.dtCadastro = dtCadastro;
     }
 
-    @OneToOne(fetch = FetchType.EAGER, mappedBy = "usuario")
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "usuario")
     public Posicaousuario getPosicaousuario() {
         return this.posicaousuario;
     }

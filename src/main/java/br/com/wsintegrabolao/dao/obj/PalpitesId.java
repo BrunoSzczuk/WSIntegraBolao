@@ -1,5 +1,5 @@
 package br.com.wsintegrabolao.dao.obj;
-// Generated 08/03/2018 16:57:58 by Hibernate Tools 4.3.1
+// Generated 25/03/2018 00:24:09 by Hibernate Tools 3.6.0
 
 
 import javax.persistence.Column;
@@ -45,23 +45,6 @@ public class PalpitesId  implements java.io.Serializable {
     }
 
 
-   public boolean equals(Object other) {
-         if ( (this == other ) ) return true;
-		 if ( (other == null ) ) return false;
-		 if ( !(other instanceof PalpitesId) ) return false;
-		 PalpitesId castOther = ( PalpitesId ) other; 
-         
-		 return (this.getCdJogo()==castOther.getCdJogo())
- && ( (this.getCdUsuario()==castOther.getCdUsuario()) || ( this.getCdUsuario()!=null && castOther.getCdUsuario()!=null && this.getCdUsuario().equals(castOther.getCdUsuario()) ) );
-   }
-   
-   public int hashCode() {
-         int result = 17;
-         
-         result = 37 * result + this.getCdJogo();
-         result = 37 * result + ( getCdUsuario() == null ? 0 : this.getCdUsuario().hashCode() );
-         return result;
-   }   
 
 
 }
