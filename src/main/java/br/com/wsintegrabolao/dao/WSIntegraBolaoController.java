@@ -13,8 +13,10 @@ import br.com.wsintegrabolao.dao.obj.Classificacaopg;
 import br.com.wsintegrabolao.dao.obj.Classificacaovitoria;
 import br.com.wsintegrabolao.dao.obj.Equipe;
 import br.com.wsintegrabolao.dao.obj.Jogoid;
+import br.com.wsintegrabolao.dao.obj.Tipousuario;
 import br.com.wsintegrabolao.dao.obj.Usuario;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -63,15 +65,16 @@ public class WSIntegraBolaoController {
         return null;
     }
 
-    public static List<ClassificacaoDAO> buscaClassificacaoList(){
+    public static List<ClassificacaoDAO> buscaClassificacaoList() {
         return ConexaoDAO.getInstance().getEm().createQuery("SELECT e FROM ClassificacaoDAO e", ClassificacaoDAO.class).getResultList();
     }
+
     public static Equipe buscaEquipe(String cdEquipe) {
         return ConexaoDAO.getInstance().getEm().find(Equipe.class, cdEquipe);
     }
-    
-    public static List<Equipe> buscaEquipeList(){
-        return ConexaoDAO.getInstance().getEm().createQuery("SELECT e FROM Equipe e", Equipe.class).getResultList();
+
+    public static List<Equipe> buscaEquipeList() {
+        return (List<Equipe>)buscaListGenerico(Equipe.class);
     }
 
     public static Classificacaoderrota buscaClassificacaoderrota(String cdEquipe) {
@@ -95,17 +98,26 @@ public class WSIntegraBolaoController {
     }
 
     public static Jogoid buscaJogo(int cdJogo) {
-        return ConexaoDAO.getInstance().getEm().find(Jogoid.class,cdJogo);
+        return ConexaoDAO.getInstance().getEm().find(Jogoid.class, cdJogo);
     }
 
-    public static List<Jogoid> buscaJogoList(){
-        return ConexaoDAO.getInstance().getEm().createQuery("SELECT e FROM Jogoid e", Jogoid.class).getResultList();
+    public static List<Jogoid> buscaJogoList() {
+        return (List<Jogoid>) buscaListGenerico(Jogoid.class);
     }
+
     public static List<Jogoid> buscaJogoRodada(String nrRodada) {
         return ConexaoDAO.getInstance().getEm().createQuery("SELECT e from Jogoid e where e.nrRodada = :nrRodada", Jogoid.class).setParameter("nrRodada", nrRodada).getResultList();
     }
-    public static Usuario buscaUsuario(String cdUsuario){
+
+    public static Usuario buscaUsuario(String cdUsuario) {
         return ConexaoDAO.getInstance().getEm().find(Usuario.class, cdUsuario);
     }
 
+    public static List<Tipousuario> buscaTipoUsuario() {
+        return (List<Tipousuario>)buscaListGenerico(Tipousuario.class);
+    }
+
+    public static ArrayList buscaListGenerico(Class c) {
+        return new ArrayList(ConexaoDAO.getInstance().getEm().createQuery("SELECT e FROM " + c.getName()+ " e", c).getResultList());
+    }
 }

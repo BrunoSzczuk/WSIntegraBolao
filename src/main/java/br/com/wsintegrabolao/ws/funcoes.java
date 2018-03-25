@@ -9,7 +9,7 @@ import br.com.wsintegrabolao.dao.WSIntegraBolaoController;
 import br.com.wsintegrabolao.dao.obj.ClassificacaoDAO;
 import br.com.wsintegrabolao.dao.obj.Equipe;
 import br.com.wsintegrabolao.dao.obj.Jogoid;
-import br.com.wsintegrabolao.util.HibernateProxyTypeAdapter;
+import br.com.wsintegrabolao.dto.HibernateProxyTypeAdapter;
 import br.com.wsintegrabolao.util.Utils;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

@@ -6,13 +6,13 @@
 package br.com.wsintegrabolao.ws;
 
 import br.com.wsintegrabolao.dao.WSIntegraBolaoController;
-import br.com.wsintegrabolao.util.HibernateProxyTypeAdapter;
+import br.com.wsintegrabolao.dto.HibernateProxyTypeAdapter;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
-import br.com.wsintegrabolao.dto.validator.Validator;
+import br.com.wsintegrabolao.dto.Validator;
 import br.com.wsintegrabolao.util.Utils;
 
 /**
@@ -23,8 +23,8 @@ import br.com.wsintegrabolao.util.Utils;
 
 public class bolao {
 
-    Gson gsonGenerico = new GsonBuilder().registerTypeAdapterFactory(HibernateProxyTypeAdapter.FACTORY).setDateFormat("yyyy-MM-dd HH:mm:ssX").create();
-    Gson gsonExpose = new GsonBuilder().registerTypeAdapterFactory(HibernateProxyTypeAdapter.FACTORY).setDateFormat("yyyy-MM-dd HH:mm:ssX").excludeFieldsWithoutExposeAnnotation().create();
+    Gson gsonGenerico = new GsonBuilder().registerTypeAdapterFactory(HibernateProxyTypeAdapter.FACTORY).setDateFormat("yyyy-MM-dd HH:mm:ss").create();
+    Gson gsonExpose = new GsonBuilder().registerTypeAdapterFactory(HibernateProxyTypeAdapter.FACTORY).setDateFormat("yyyy-MM-dd HH:mm:ss").excludeFieldsWithoutExposeAnnotation().create();
 
     /**
      * Operação de Web service
@@ -36,6 +36,18 @@ public class bolao {
     public String getUsuario(@WebParam(name = "cdUsuario") String cdUsuario, @WebParam(name = "token") String token) {
         if (Validator.validaToken(token)) {
            return Utils.getJsonGenerico(WSIntegraBolaoController.buscaUsuario(cdUsuario), gsonGenerico);
+        } else {
+            return "ERRO: TOKEN inválido.";
+        }
+    }
+
+    /**
+     * Operação de Web service
+     */
+    @WebMethod(operationName = "getTipoUsuario")
+    public String getTipoUsuario(@WebParam(name = "token") String token) {
+        if (Validator.validaToken(token)) {
+           return Utils.getJsonGenerico(WSIntegraBolaoController.buscaTipoUsuario(), gsonGenerico);
         } else {
             return "ERRO: TOKEN inválido.";
         }
