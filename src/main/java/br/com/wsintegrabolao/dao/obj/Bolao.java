@@ -21,7 +21,7 @@ import javax.persistence.Table;
 public class Bolao implements java.io.Serializable {
 
     private long cdBolao;
-    private Usuario usuario;
+    private UsuarioDAO usuario;
     private String dsBolao;
     private boolean stAtivo;
     private Integer dtAnobolao;
@@ -36,7 +36,7 @@ public class Bolao implements java.io.Serializable {
         this.stAtivo = stAtivo;
     }
 
-    public Bolao(long cdBolao, Usuario usuario, String dsBolao, boolean stAtivo, Integer dtAnobolao, Integer qtUsuarios, Set bolaousuarios, Set palpites) {
+    public Bolao(long cdBolao, UsuarioDAO usuario, String dsBolao, boolean stAtivo, Integer dtAnobolao, Integer qtUsuarios, Set bolaousuarios, Set palpites) {
         this.cdBolao = cdBolao;
         this.usuario = usuario;
         this.dsBolao = dsBolao;
@@ -58,11 +58,11 @@ public class Bolao implements java.io.Serializable {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cd_responsavel")
-    public Usuario getUsuario() {
+    public UsuarioDAO getUsuario() {
         return this.usuario;
     }
 
-    public void setUsuario(Usuario usuario) {
+    public void setUsuario(UsuarioDAO usuario) {
         this.usuario = usuario;
     }
 

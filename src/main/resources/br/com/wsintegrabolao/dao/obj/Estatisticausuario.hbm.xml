@@ -1,28 +1,27 @@
-<?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 25/03/2018 00:53:08 by Hibernate Tools 3.6.0 -->
 <hibernate-mapping>
-    <class name="br.com.wsintegrabolao.dao.obj.Estatisticausuario" table="estatisticausuario" schema="public">
-        <composite-id name="id" class="br.com.wsintegrabolao.dao.obj.EstatisticausuarioId">
-            <key-property name="cdRodada" type="int">
-                <column name="cd_rodada" />
-            </key-property>
-            <key-property name="cdUsuario" type="string">
-                <column name="cd_usuario" length="20" />
-            </key-property>
-        </composite-id>
-        <many-to-one name="usuario" class="br.com.wsintegrabolao.dao.obj.Usuario" update="false" insert="false" fetch="select">
-            <column name="cd_usuario" length="20" not-null="true" />
-        </many-to-one>
-        <many-to-one name="rodada" class="br.com.wsintegrabolao.dao.obj.Rodada" update="false" insert="false" fetch="select">
-            <column name="cd_rodada" not-null="true" />
-        </many-to-one>
-        <property name="pcAcertocheio" type="big_decimal">
-            <column name="pc_acertocheio" precision="5" />
-        </property>
-        <property name="pcErro" type="big_decimal">
-            <column name="pc_erro" precision="5" />
-        </property>
-    </class>
+  <class name="br.com.wsintegrabolao.dao.obj.Estatisticausuario" schema="public" table="estatisticausuario">
+    <composite-id class="br.com.wsintegrabolao.dao.obj.EstatisticausuarioId" name="id">
+      <key-property name="cdRodada" type="int">
+        <column name="cd_rodada"/>
+      </key-property>
+      <key-property name="cdUsuario" type="string">
+        <column length="20" name="cd_usuario"/>
+      </key-property>
+    </composite-id>
+    <many-to-one class="br.com.wsintegrabolao.dao.obj.UsuarioDAO" fetch="select" insert="false" name="usuario" update="false">
+      <column length="20" name="cd_usuario" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="br.com.wsintegrabolao.dao.obj.Rodada" fetch="select" insert="false" name="rodada" update="false">
+      <column name="cd_rodada" not-null="true"/>
+    </many-to-one>
+    <property name="pcAcertocheio" type="big_decimal">
+      <column name="pc_acertocheio" precision="5"/>
+    </property>
+    <property name="pcErro" type="big_decimal">
+      <column name="pc_erro" precision="5"/>
+    </property>
+  </class>
 </hibernate-mapping>

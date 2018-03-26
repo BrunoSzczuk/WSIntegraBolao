@@ -1,19 +1,18 @@
-<?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 25/03/2018 00:53:08 by Hibernate Tools 3.6.0 -->
 <hibernate-mapping>
-    <class name="br.com.wsintegrabolao.dao.obj.Datajogos" table="datajogos" schema="public">
-        <composite-id name="id" class="br.com.wsintegrabolao.dao.obj.DatajogosId">
-            <key-property name="data" type="timestamp">
-                <column name="data" length="29" />
-            </key-property>
-            <key-property name="cdJogo" type="int">
-                <column name="cd_jogo" />
-            </key-property>
-        </composite-id>
-        <many-to-one name="jogoid" class="br.com.wsintegrabolao.dao.obj.Jogoid" update="false" insert="false" fetch="select">
-            <column name="cd_jogo" not-null="true" />
-        </many-to-one>
-    </class>
+  <class name="br.com.wsintegrabolao.dao.obj.Datajogos" schema="public" table="datajogos">
+    <composite-id class="br.com.wsintegrabolao.dao.obj.DatajogosId" name="id">
+      <key-property name="data" type="timestamp">
+        <column length="29" name="data"/>
+      </key-property>
+      <key-property name="cdJogo" type="int">
+        <column name="cd_jogo"/>
+      </key-property>
+    </composite-id>
+    <many-to-one class="br.com.wsintegrabolao.dao.obj.JogoidDAO" fetch="select" insert="false" name="jogoid" update="false">
+      <column name="cd_jogo" not-null="true"/>
+    </many-to-one>
+  </class>
 </hibernate-mapping>

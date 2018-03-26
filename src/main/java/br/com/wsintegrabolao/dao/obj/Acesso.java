@@ -24,7 +24,7 @@ public class Acesso  implements java.io.Serializable {
 
 
      private long cdAcesso;
-     private Usuario usuario;
+     private UsuarioDAO usuario;
      private String nrIpconexao;
      private Date dtAcesso;
 
@@ -32,12 +32,12 @@ public class Acesso  implements java.io.Serializable {
     }
 
 	
-    public Acesso(long cdAcesso, Usuario usuario, Date dtAcesso) {
+    public Acesso(long cdAcesso,UsuarioDAO usuario, Date dtAcesso) {
         this.cdAcesso = cdAcesso;
         this.usuario = usuario;
         this.dtAcesso = dtAcesso;
     }
-    public Acesso(long cdAcesso, Usuario usuario, String nrIpconexao, Date dtAcesso) {
+    public Acesso(long cdAcesso,UsuarioDAO usuario, String nrIpconexao, Date dtAcesso) {
        this.cdAcesso = cdAcesso;
        this.usuario = usuario;
        this.nrIpconexao = nrIpconexao;
@@ -58,11 +58,11 @@ public class Acesso  implements java.io.Serializable {
 
 @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="cd_usuario", nullable=false)
-    public Usuario getUsuario() {
+    public UsuarioDAO getUsuario() {
         return this.usuario;
     }
     
-    public void setUsuario(Usuario usuario) {
+    public void setUsuario (UsuarioDAO usuario) {
         this.usuario = usuario;
     }
 

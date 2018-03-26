@@ -26,14 +26,14 @@ public class Bolaousuario  implements java.io.Serializable {
 
 
      private BolaousuarioId id;
-     private Usuario usuario;
+     private UsuarioDAO usuario;
      private Bolao bolao;
      private Date dtInsercao;
 
     public Bolaousuario() {
     }
 
-    public Bolaousuario(BolaousuarioId id, Usuario usuario, Bolao bolao, Date dtInsercao) {
+    public Bolaousuario(BolaousuarioId id,UsuarioDAO usuario, Bolao bolao, Date dtInsercao) {
        this.id = id;
        this.usuario = usuario;
        this.bolao = bolao;
@@ -56,11 +56,11 @@ public class Bolaousuario  implements java.io.Serializable {
 
 @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="cd_usuario", nullable=false, insertable=false, updatable=false)
-    public Usuario getUsuario() {
+    public UsuarioDAO getUsuario() {
         return this.usuario;
     }
     
-    public void setUsuario(Usuario usuario) {
+    public void setUsuario (UsuarioDAO usuario) {
         this.usuario = usuario;
     }
 

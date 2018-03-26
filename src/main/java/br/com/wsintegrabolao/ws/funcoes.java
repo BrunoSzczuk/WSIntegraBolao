@@ -8,7 +8,7 @@ package br.com.wsintegrabolao.ws;
 import br.com.wsintegrabolao.dao.WSIntegraBolaoController;
 import br.com.wsintegrabolao.dao.obj.ClassificacaoDAO;
 import br.com.wsintegrabolao.dao.obj.EquipeDAO;
-import br.com.wsintegrabolao.dao.obj.Jogoid;
+import br.com.wsintegrabolao.dao.obj.JogoidDAO;
 import br.com.wsintegrabolao.dto.HibernateProxyTypeAdapter;
 import br.com.wsintegrabolao.dto.funcoes.EquipeDTO;
 import br.com.wsintegrabolao.dto.funcoes.JogoidDTO;
@@ -29,8 +29,8 @@ import javax.jws.WebParam;
 @WebService(serviceName = "funcoes")
 public class funcoes {
 
-    Gson gsonGenerico = new GsonBuilder().registerTypeAdapterFactory(HibernateProxyTypeAdapter.FACTORY).setDateFormat("yyyy-MM-dd").create();
-    Gson gsonExpose = new GsonBuilder().registerTypeAdapterFactory(HibernateProxyTypeAdapter.FACTORY).setDateFormat("yyyy-MM-dd").excludeFieldsWithoutExposeAnnotation().create();
+    Gson gsonGenerico = new GsonBuilder().registerTypeAdapterFactory(HibernateProxyTypeAdapter.FACTORY).setDateFormat("yyyy-MM-dd HH:mm:ss").create();
+    Gson gsonExpose = new GsonBuilder().registerTypeAdapterFactory(HibernateProxyTypeAdapter.FACTORY).setDateFormat("yyyy-MM-dd HH:mm:ss").excludeFieldsWithoutExposeAnnotation().create();
 
     /**
      * Operação de Web service
@@ -100,6 +100,8 @@ public class funcoes {
 
     /**
      * Operação de Web service
+     * @param cdJogo
+     * @return 
      */
     @WebMethod(operationName = "getJogo")
     public String getJogo(@WebParam(name = "cdJogo") int cdJogo) {
@@ -120,7 +122,7 @@ public class funcoes {
     public String getJogoRodada(@WebParam(name = "nrRodada") String nrRodada) {
         List<JogoidDTO> lista = new ArrayList<>();
         try {
-            for (Jogoid j : WSIntegraBolaoController.buscaJogoRodada(nrRodada)){
+            for (JogoidDAO j : WSIntegraBolaoController.buscaJogoRodada(nrRodada)){
                 lista.add(new JogoidDTO(j));
             }
         } catch (Exception e) {
@@ -137,7 +139,7 @@ public class funcoes {
     public String getJogoList() {
         List<JogoidDTO> lista = new ArrayList<>();
         try {
-            for (Jogoid j : WSIntegraBolaoController.buscaJogoList()){
+            for (JogoidDAO j : WSIntegraBolaoController.buscaJogoList()){
                 lista.add(new JogoidDTO(j));
             }
         } catch (Exception e) {

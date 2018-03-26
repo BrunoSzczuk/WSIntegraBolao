@@ -1,16 +1,14 @@
-<?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 25/03/2018 00:53:08 by Hibernate Tools 3.6.0 -->
 <hibernate-mapping>
-    <class name="br.com.wsintegrabolao.dao.obj.Tipousuario" table="tipousuario" schema="public">
-        <id name="cdTipo" type="int">
-            <column name="cd_tipo" />
-            <generator class="assigned" />
-        </id>
-        <property name="dsTipo" type="string">
-            <column name="ds_tipo" length="60" not-null="true" />
-        </property>
-        
-    </class>
+  <class name="br.com.wsintegrabolao.dao.obj.TipousuarioDAO" schema="public" table="tipousuario">
+    <id name="cdTipo" type="int">
+      <column name="cd_tipo"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="dsTipo" type="string">
+      <column length="60" name="ds_tipo" not-null="true"/>
+    </property>
+  </class>
 </hibernate-mapping>

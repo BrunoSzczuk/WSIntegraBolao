@@ -24,13 +24,13 @@ public class Erro  implements java.io.Serializable {
 
 
      private int cdErro;
-     private Usuario usuario;
+     private UsuarioDAO usuario;
      private Date dtErro;
 
     public Erro() {
     }
 
-    public Erro(int cdErro, Usuario usuario, Date dtErro) {
+    public Erro(int cdErro,UsuarioDAO usuario, Date dtErro) {
        this.cdErro = cdErro;
        this.usuario = usuario;
        this.dtErro = dtErro;
@@ -50,11 +50,11 @@ public class Erro  implements java.io.Serializable {
 
 @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="cd_usuario", nullable=false)
-    public Usuario getUsuario() {
+    public UsuarioDAO getUsuario() {
         return this.usuario;
     }
     
-    public void setUsuario(Usuario usuario) {
+    public void setUsuario (UsuarioDAO usuario) {
         this.usuario = usuario;
     }
 

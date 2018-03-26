@@ -26,8 +26,8 @@ public class Palpites  implements java.io.Serializable {
 
 
      private PalpitesId id;
-     private Jogoid jogoid;
-     private Usuario usuario;
+     private JogoidDAO jogoid;
+     private UsuarioDAO usuario;
      private int nrGols1;
      private Date dtAposta;
      private Date dtUltimaatt;
@@ -38,7 +38,7 @@ public class Palpites  implements java.io.Serializable {
     }
 
 	
-    public Palpites(PalpitesId id, Jogoid jogoid, Usuario usuario, int nrGols1, Date dtAposta, int nrGols2) {
+    public Palpites(PalpitesId id, JogoidDAO jogoid,UsuarioDAO usuario, int nrGols1, Date dtAposta, int nrGols2) {
         this.id = id;
         this.jogoid = jogoid;
         this.usuario = usuario;
@@ -46,7 +46,7 @@ public class Palpites  implements java.io.Serializable {
         this.dtAposta = dtAposta;
         this.nrGols2 = nrGols2;
     }
-    public Palpites(PalpitesId id, Jogoid jogoid, Usuario usuario, int nrGols1, Date dtAposta, Date dtUltimaatt, int nrGols2, String stPalpite) {
+    public Palpites(PalpitesId id, JogoidDAO jogoid,UsuarioDAO usuario, int nrGols1, Date dtAposta, Date dtUltimaatt, int nrGols2, String stPalpite) {
        this.id = id;
        this.jogoid = jogoid;
        this.usuario = usuario;
@@ -73,21 +73,21 @@ public class Palpites  implements java.io.Serializable {
 
 @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="cd_jogo", nullable=false, insertable=false, updatable=false)
-    public Jogoid getJogoid() {
+    public JogoidDAO getJogoid() {
         return this.jogoid;
     }
     
-    public void setJogoid(Jogoid jogoid) {
+    public void setJogoid(JogoidDAO jogoid) {
         this.jogoid = jogoid;
     }
 
 @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="cd_usuario", nullable=false, insertable=false, updatable=false)
-    public Usuario getUsuario() {
+    public UsuarioDAO getUsuario() {
         return this.usuario;
     }
     
-    public void setUsuario(Usuario usuario) {
+    public void setUsuario (UsuarioDAO usuario) {
         this.usuario = usuario;
     }
 

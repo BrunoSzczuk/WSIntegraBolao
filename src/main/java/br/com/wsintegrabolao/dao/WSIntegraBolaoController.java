@@ -12,9 +12,9 @@ import br.com.wsintegrabolao.dao.obj.Classificacaojogo;
 import br.com.wsintegrabolao.dao.obj.Classificacaopg;
 import br.com.wsintegrabolao.dao.obj.Classificacaovitoria;
 import br.com.wsintegrabolao.dao.obj.EquipeDAO;
-import br.com.wsintegrabolao.dao.obj.Jogoid;
-import br.com.wsintegrabolao.dao.obj.Tipousuario;
-import br.com.wsintegrabolao.dao.obj.Usuario;
+import br.com.wsintegrabolao.dao.obj.JogoidDAO;
+import br.com.wsintegrabolao.dao.obj.TipousuarioDAO;
+import br.com.wsintegrabolao.dao.obj.UsuarioDAO;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
@@ -97,24 +97,24 @@ public class WSIntegraBolaoController {
         return ConexaoDAO.getInstance().getEm().createQuery("SELECT e from Classificacaopg e where e.cdEquipe = :cdEquipe", Classificacaopg.class).setParameter("cdEquipe", cdEquipe).getSingleResult();
     }
 
-    public static Jogoid buscaJogo(int cdJogo) {
-        return ConexaoDAO.getInstance().getEm().find(Jogoid.class, cdJogo);
+    public static JogoidDAO buscaJogo(int cdJogo) {
+        return ConexaoDAO.getInstance().getEm().find(JogoidDAO.class, cdJogo);
     }
 
-    public static List<Jogoid> buscaJogoList() {
-        return (List<Jogoid>) buscaListGenerico(Jogoid.class);
+    public static List<JogoidDAO> buscaJogoList() {
+        return (List<JogoidDAO>) buscaListGenerico(JogoidDAO.class);
     }
 
-    public static List<Jogoid> buscaJogoRodada(String nrRodada) {
-        return ConexaoDAO.getInstance().getEm().createQuery("SELECT e from Jogoid e where e.nrRodada = :nrRodada", Jogoid.class).setParameter("nrRodada", nrRodada).getResultList();
+    public static List<JogoidDAO> buscaJogoRodada(String nrRodada) {
+        return ConexaoDAO.getInstance().getEm().createQuery("SELECT e from Jogoid e where e.nrRodada = :nrRodada", JogoidDAO.class).setParameter("nrRodada", nrRodada).getResultList();
     }
 
-    public static Usuario buscaUsuario(String cdUsuario) {
-        return ConexaoDAO.getInstance().getEm().find(Usuario.class, cdUsuario);
+    public static UsuarioDAO buscaUsuario(String cdUsuario) {
+        return ConexaoDAO.getInstance().getEm().find(UsuarioDAO.class, cdUsuario);
     }
 
-    public static List<Tipousuario> buscaTipoUsuario() {
-        return (List<Tipousuario>)buscaListGenerico(Tipousuario.class);
+    public static List<TipousuarioDAO> buscaTipoUsuario() {
+        return (List<TipousuarioDAO>)buscaListGenerico(TipousuarioDAO.class);
     }
 
     public static ArrayList buscaListGenerico(Class c) {

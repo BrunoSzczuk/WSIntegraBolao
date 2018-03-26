@@ -1,6 +1,6 @@
 package br.com.wsintegrabolao.dto.funcoes;
 
-import br.com.wsintegrabolao.dao.obj.Jogoid;
+import br.com.wsintegrabolao.dao.obj.JogoidDAO;
 import java.io.Serializable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -109,7 +109,7 @@ public class JogoidDTO implements Serializable {
         this.urlVideo = urlVideo;
     }
 
-    public JogoidDTO(Jogoid j) {
+    public JogoidDTO(JogoidDAO j) {
         super();
         this.cdJogo = j.getCdJogo();
         this.cdEquipe2 = j.getEquipeByCdEquipe2().getCdEquipe();

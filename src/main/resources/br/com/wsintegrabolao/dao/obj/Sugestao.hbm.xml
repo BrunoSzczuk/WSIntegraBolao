@@ -1,21 +1,20 @@
-<?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 25/03/2018 00:53:08 by Hibernate Tools 3.6.0 -->
 <hibernate-mapping>
-    <class name="br.com.wsintegrabolao.dao.obj.Sugestao" table="sugestao" schema="public">
-        <id name="nrSugestao" type="long">
-            <column name="nr_sugestao" />
-            <generator class="assigned" />
-        </id>
-        <many-to-one name="usuario" class="br.com.wsintegrabolao.dao.obj.Usuario" fetch="select">
-            <column name="cd_usuario" length="20" not-null="true" />
-        </many-to-one>
-        <property name="dsSugestao" type="string">
-            <column name="ds_sugestao" not-null="true" />
-        </property>
-        <property name="dtSugestao" type="timestamp">
-            <column name="dt_sugestao" length="29" not-null="true" />
-        </property>
-    </class>
+  <class name="br.com.wsintegrabolao.dao.obj.Sugestao" schema="public" table="sugestao">
+    <id name="nrSugestao" type="long">
+      <column name="nr_sugestao"/>
+      <generator class="assigned"/>
+    </id>
+    <many-to-one class="br.com.wsintegrabolao.dao.obj.UsuarioDAO" fetch="select" name="usuario">
+      <column length="20" name="cd_usuario" not-null="true"/>
+    </many-to-one>
+    <property name="dsSugestao" type="string">
+      <column name="ds_sugestao" not-null="true"/>
+    </property>
+    <property name="dtSugestao" type="timestamp">
+      <column length="29" name="dt_sugestao" not-null="true"/>
+    </property>
+  </class>
 </hibernate-mapping>

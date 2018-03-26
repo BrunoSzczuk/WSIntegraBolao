@@ -1,46 +1,45 @@
-<?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 25/03/2018 00:53:08 by Hibernate Tools 3.6.0 -->
 <hibernate-mapping>
-    <class name="br.com.wsintegrabolao.dao.obj.Palpite" table="palpite" schema="public">
-        <composite-id name="id" class="br.com.wsintegrabolao.dao.obj.PalpiteId">
-            <key-property name="cdJogo" type="int">
-                <column name="cd_jogo" />
-            </key-property>
-            <key-property name="cdUsuario" type="string">
-                <column name="cd_usuario" length="20" />
-            </key-property>
-            <key-property name="cdBolao" type="long">
-                <column name="cd_bolao" />
-            </key-property>
-        </composite-id>
-        <many-to-one name="jogoid" class="br.com.wsintegrabolao.dao.obj.Jogoid" update="false" insert="false" fetch="select">
-            <column name="cd_jogo" not-null="true" />
-        </many-to-one>
-        <many-to-one name="usuario" class="br.com.wsintegrabolao.dao.obj.Usuario" update="false" insert="false" fetch="select">
-            <column name="cd_usuario" length="20" not-null="true" />
-        </many-to-one>
-        <many-to-one name="bolao" class="br.com.wsintegrabolao.dao.obj.Bolao" update="false" insert="false" fetch="select">
-            <column name="cd_bolao" not-null="true" />
-        </many-to-one>
-        <property name="nrGols1" type="int">
-            <column name="nr_gols1" not-null="true" />
-        </property>
-        <property name="dtAposta" type="timestamp">
-            <column name="dt_aposta" length="29" not-null="true" />
-        </property>
-        <property name="dtUltimaatt" type="timestamp">
-            <column name="dt_ultimaatt" length="29" />
-        </property>
-        <property name="nrGols2" type="int">
-            <column name="nr_gols2" not-null="true" />
-        </property>
-        <property name="stPalpite" type="string">
-            <column name="st_palpite">
-                <comment>A - Aberto, F - Fechado</comment>
-            </column>
-        </property>
-        <one-to-one name="resultadopalpite" class="br.com.wsintegrabolao.dao.obj.Resultadopalpite"></one-to-one>
-    </class>
+  <class name="br.com.wsintegrabolao.dao.obj.Palpite" schema="public" table="palpite">
+    <composite-id class="br.com.wsintegrabolao.dao.obj.PalpiteId" name="id">
+      <key-property name="cdJogo" type="int">
+        <column name="cd_jogo"/>
+      </key-property>
+      <key-property name="cdUsuario" type="string">
+        <column length="20" name="cd_usuario"/>
+      </key-property>
+      <key-property name="cdBolao" type="long">
+        <column name="cd_bolao"/>
+      </key-property>
+    </composite-id>
+    <many-to-one class="br.com.wsintegrabolao.dao.obj.JogoidDAO" fetch="select" insert="false" name="jogoid" update="false">
+      <column name="cd_jogo" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="br.com.wsintegrabolao.dao.obj.UsuarioDAO" fetch="select" insert="false" name="usuario" update="false">
+      <column length="20" name="cd_usuario" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="br.com.wsintegrabolao.dao.obj.Bolao" fetch="select" insert="false" name="bolao" update="false">
+      <column name="cd_bolao" not-null="true"/>
+    </many-to-one>
+    <property name="nrGols1" type="int">
+      <column name="nr_gols1" not-null="true"/>
+    </property>
+    <property name="dtAposta" type="timestamp">
+      <column length="29" name="dt_aposta" not-null="true"/>
+    </property>
+    <property name="dtUltimaatt" type="timestamp">
+      <column length="29" name="dt_ultimaatt"/>
+    </property>
+    <property name="nrGols2" type="int">
+      <column name="nr_gols2" not-null="true"/>
+    </property>
+    <property name="stPalpite" type="string">
+      <column name="st_palpite">
+        <comment>A - Aberto, F - Fechado</comment>
+      </column>
+    </property>
+    <one-to-one class="br.com.wsintegrabolao.dao.obj.Resultadopalpite" name="resultadopalpite"/>
+  </class>
 </hibernate-mapping>

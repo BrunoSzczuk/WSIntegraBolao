@@ -24,7 +24,7 @@ public class Posicaousuario  implements java.io.Serializable {
 
 
      private String cdUsuario;
-     private Usuario usuario;
+     private UsuarioDAO usuario;
      private Integer nrSobedesce;
      private int nrPosicao;
 
@@ -32,11 +32,11 @@ public class Posicaousuario  implements java.io.Serializable {
     }
 
 	
-    public Posicaousuario(Usuario usuario, int nrPosicao) {
+    public Posicaousuario (UsuarioDAO usuario, int nrPosicao) {
         this.usuario = usuario;
         this.nrPosicao = nrPosicao;
     }
-    public Posicaousuario(Usuario usuario, Integer nrSobedesce, int nrPosicao) {
+    public Posicaousuario (UsuarioDAO usuario, Integer nrSobedesce, int nrPosicao) {
        this.usuario = usuario;
        this.nrSobedesce = nrSobedesce;
        this.nrPosicao = nrPosicao;
@@ -55,11 +55,11 @@ public class Posicaousuario  implements java.io.Serializable {
     }
 
 @OneToOne(fetch=FetchType.LAZY)@PrimaryKeyJoinColumn
-    public Usuario getUsuario() {
+    public UsuarioDAO getUsuario() {
         return this.usuario;
     }
     
-    public void setUsuario(Usuario usuario) {
+    public void setUsuario (UsuarioDAO usuario) {
         this.usuario = usuario;
     }
 

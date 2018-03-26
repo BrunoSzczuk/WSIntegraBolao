@@ -24,14 +24,14 @@ public class Sugestao  implements java.io.Serializable {
 
 
      private long nrSugestao;
-     private Usuario usuario;
+     private UsuarioDAO usuario;
      private String dsSugestao;
      private Date dtSugestao;
 
     public Sugestao() {
     }
 
-    public Sugestao(long nrSugestao, Usuario usuario, String dsSugestao, Date dtSugestao) {
+    public Sugestao(long nrSugestao,UsuarioDAO usuario, String dsSugestao, Date dtSugestao) {
        this.nrSugestao = nrSugestao;
        this.usuario = usuario;
        this.dsSugestao = dsSugestao;
@@ -52,11 +52,11 @@ public class Sugestao  implements java.io.Serializable {
 
 @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="cd_usuario", nullable=false)
-    public Usuario getUsuario() {
+    public UsuarioDAO getUsuario() {
         return this.usuario;
     }
     
-    public void setUsuario(Usuario usuario) {
+    public void setUsuario (UsuarioDAO usuario) {
         this.usuario = usuario;
     }
 

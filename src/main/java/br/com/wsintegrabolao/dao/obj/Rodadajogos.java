@@ -23,12 +23,12 @@ public class Rodadajogos  implements java.io.Serializable {
 
 
      private RodadajogosId id;
-     private Jogoid jogoid;
+     private JogoidDAO jogoid;
 
     public Rodadajogos() {
     }
 
-    public Rodadajogos(RodadajogosId id, Jogoid jogoid) {
+    public Rodadajogos(RodadajogosId id,JogoidDAO jogoid) {
        this.id = id;
        this.jogoid = jogoid;
     }
@@ -49,11 +49,11 @@ public class Rodadajogos  implements java.io.Serializable {
 
 @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="cd_jogo", nullable=false, insertable=false, updatable=false)
-    public Jogoid getJogoid() {
+    public JogoidDAO getJogoid() {
         return this.jogoid;
     }
     
-    public void setJogoid(Jogoid jogoid) {
+    public void setJogoid (JogoidDAO jogoid) {
         this.jogoid = jogoid;
     }
 
