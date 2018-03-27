@@ -1,12 +1,11 @@
-package br.com.wsintegrabolao.dto.funcoes.classificacao;
-// Generated 25/03/2018 00:53:08 by Hibernate Tools 3.6.0
+package br.com.wsintegrabolao.funcoes.dto.classificacao;
 
-import br.com.wsintegrabolao.dao.obj.Classificacaopg;
+import br.com.wsintegrabolao.dao.obj.Classificacaoderrota;
 import java.io.Serializable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class PontosGanhos implements Serializable {
+public class Derrota implements Serializable {
 
     @SerializedName("qtMandante")
     @Expose
@@ -17,13 +16,13 @@ public class PontosGanhos implements Serializable {
     @SerializedName("qtVisitante")
     @Expose
     private int qtVisitante;
-    private final static long serialVersionUID = -2228831585870719673L;
+    private final static long serialVersionUID = -3839355860251056776L;
 
     /**
      * No args constructor for use in serialization
      *     
 */
-    public PontosGanhos() {
+    public Derrota() {
     }
 
     /**
@@ -32,14 +31,14 @@ public class PontosGanhos implements Serializable {
      * @param qtTotal
      * @param qtVisitante
      */
-    public PontosGanhos(int qtMandante, int qtTotal, int qtVisitante) {
+    public Derrota(int qtMandante, int qtTotal, int qtVisitante) {
         super();
         this.qtMandante = qtMandante;
         this.qtTotal = qtTotal;
         this.qtVisitante = qtVisitante;
     }
 
-    public PontosGanhos(Classificacaopg c) {
+    public Derrota(Classificacaoderrota c) {
         super();
         this.qtMandante = c.getQtMandante();
         this.qtTotal = c.getQtTotal();
@@ -54,7 +53,7 @@ public class PontosGanhos implements Serializable {
         this.qtMandante = qtMandante;
     }
 
-    public PontosGanhos withQtMandante(int qtMandante) {
+    public Derrota withQtMandante(int qtMandante) {
         this.qtMandante = qtMandante;
         return this;
     }
@@ -67,7 +66,7 @@ public class PontosGanhos implements Serializable {
         this.qtTotal = qtTotal;
     }
 
-    public PontosGanhos withQtTotal(int qtTotal) {
+    public Derrota withQtTotal(int qtTotal) {
         this.qtTotal = qtTotal;
         return this;
     }
@@ -80,7 +79,7 @@ public class PontosGanhos implements Serializable {
         this.qtVisitante = qtVisitante;
     }
 
-    public PontosGanhos withQtVisitante(int qtVisitante) {
+    public Derrota withQtVisitante(int qtVisitante) {
         this.qtVisitante = qtVisitante;
         return this;
     }

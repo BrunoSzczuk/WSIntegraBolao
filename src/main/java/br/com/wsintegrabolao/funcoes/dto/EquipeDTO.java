@@ -1,4 +1,4 @@
-package br.com.wsintegrabolao.dto.funcoes;
+package br.com.wsintegrabolao.funcoes.dto;
 
 import br.com.wsintegrabolao.dao.obj.EquipeDAO;
 import java.io.Serializable;

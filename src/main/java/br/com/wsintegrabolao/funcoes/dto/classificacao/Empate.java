@@ -1,12 +1,11 @@
-package br.com.wsintegrabolao.dto.funcoes.classificacao;
-// Generated 25/03/2018 00:53:08 by Hibernate Tools 3.6.0
+package br.com.wsintegrabolao.funcoes.dto.classificacao;
 
-import br.com.wsintegrabolao.dao.obj.Classificacaojogo;
+import br.com.wsintegrabolao.dao.obj.Classificacaoempate;
 import java.io.Serializable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Jogos implements Serializable {
+public class Empate implements Serializable {
 
     @SerializedName("qtMandante")
     @Expose
@@ -17,13 +16,13 @@ public class Jogos implements Serializable {
     @SerializedName("qtVisitante")
     @Expose
     private int qtVisitante;
-    private final static long serialVersionUID = 589043302721085152L;
+    private final static long serialVersionUID = -2368801083520148012L;
 
     /**
      * No args constructor for use in serialization
      *     
 */
-    public Jogos() {
+    public Empate() {
     }
 
     /**
@@ -32,14 +31,14 @@ public class Jogos implements Serializable {
      * @param qtTotal
      * @param qtVisitante
      */
-    public Jogos(int qtMandante, int qtTotal, int qtVisitante) {
+    public Empate(int qtMandante, int qtTotal, int qtVisitante) {
         super();
         this.qtMandante = qtMandante;
         this.qtTotal = qtTotal;
         this.qtVisitante = qtVisitante;
     }
 
-    public Jogos(Classificacaojogo c) {
+    public Empate(Classificacaoempate c) {
         super();
         this.qtMandante = c.getQtMandante();
         this.qtTotal = c.getQtTotal();
@@ -54,7 +53,7 @@ public class Jogos implements Serializable {
         this.qtMandante = qtMandante;
     }
 
-    public Jogos withQtMandante(int qtMandante) {
+    public Empate withQtMandante(int qtMandante) {
         this.qtMandante = qtMandante;
         return this;
     }
@@ -67,7 +66,7 @@ public class Jogos implements Serializable {
         this.qtTotal = qtTotal;
     }
 
-    public Jogos withQtTotal(int qtTotal) {
+    public Empate withQtTotal(int qtTotal) {
         this.qtTotal = qtTotal;
         return this;
     }
@@ -80,7 +79,7 @@ public class Jogos implements Serializable {
         this.qtVisitante = qtVisitante;
     }
 
-    public Jogos withQtVisitante(int qtVisitante) {
+    public Empate withQtVisitante(int qtVisitante) {
         this.qtVisitante = qtVisitante;
         return this;
     }

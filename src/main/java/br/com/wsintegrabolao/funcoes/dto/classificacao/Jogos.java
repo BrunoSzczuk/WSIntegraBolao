@@ -1,12 +1,12 @@
-package br.com.wsintegrabolao.dto.funcoes.classificacao;
+package br.com.wsintegrabolao.funcoes.dto.classificacao;
 // Generated 25/03/2018 00:53:08 by Hibernate Tools 3.6.0
 
-import br.com.wsintegrabolao.dao.obj.Classificacaovitoria;
+import br.com.wsintegrabolao.dao.obj.Classificacaojogo;
 import java.io.Serializable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Vitoria implements Serializable {
+public class Jogos implements Serializable {
 
     @SerializedName("qtMandante")
     @Expose
@@ -17,13 +17,13 @@ public class Vitoria implements Serializable {
     @SerializedName("qtVisitante")
     @Expose
     private int qtVisitante;
-    private final static long serialVersionUID = 8925714000083178713L;
+    private final static long serialVersionUID = 589043302721085152L;
 
     /**
      * No args constructor for use in serialization
      *     
 */
-    public Vitoria() {
+    public Jogos() {
     }
 
     /**
@@ -32,14 +32,14 @@ public class Vitoria implements Serializable {
      * @param qtTotal
      * @param qtVisitante
      */
-    public Vitoria(int qtMandante, int qtTotal, int qtVisitante) {
+    public Jogos(int qtMandante, int qtTotal, int qtVisitante) {
         super();
         this.qtMandante = qtMandante;
         this.qtTotal = qtTotal;
         this.qtVisitante = qtVisitante;
     }
 
-    public Vitoria(Classificacaovitoria c) {
+    public Jogos(Classificacaojogo c) {
         super();
         this.qtMandante = c.getQtMandante();
         this.qtTotal = c.getQtTotal();
@@ -54,7 +54,7 @@ public class Vitoria implements Serializable {
         this.qtMandante = qtMandante;
     }
 
-    public Vitoria withQtMandante(int qtMandante) {
+    public Jogos withQtMandante(int qtMandante) {
         this.qtMandante = qtMandante;
         return this;
     }
@@ -67,7 +67,7 @@ public class Vitoria implements Serializable {
         this.qtTotal = qtTotal;
     }
 
-    public Vitoria withQtTotal(int qtTotal) {
+    public Jogos withQtTotal(int qtTotal) {
         this.qtTotal = qtTotal;
         return this;
     }
@@ -80,7 +80,7 @@ public class Vitoria implements Serializable {
         this.qtVisitante = qtVisitante;
     }
 
-    public Vitoria withQtVisitante(int qtVisitante) {
+    public Jogos withQtVisitante(int qtVisitante) {
         this.qtVisitante = qtVisitante;
         return this;
     }

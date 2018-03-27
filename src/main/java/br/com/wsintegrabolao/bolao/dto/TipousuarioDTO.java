@@ -1,4 +1,4 @@
-package br.com.wsintegrabolao.dto.bolao;
+package br.com.wsintegrabolao.bolao.dto;
 
 import br.com.wsintegrabolao.dao.obj.TipousuarioDAO;
 import java.io.Serializable;

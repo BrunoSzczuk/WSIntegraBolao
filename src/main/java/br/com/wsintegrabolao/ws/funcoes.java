@@ -10,9 +10,9 @@ import br.com.wsintegrabolao.dao.obj.ClassificacaoDAO;
 import br.com.wsintegrabolao.dao.obj.EquipeDAO;
 import br.com.wsintegrabolao.dao.obj.JogoidDAO;
 import br.com.wsintegrabolao.dto.HibernateProxyTypeAdapter;
-import br.com.wsintegrabolao.dto.funcoes.EquipeDTO;
-import br.com.wsintegrabolao.dto.funcoes.JogoidDTO;
-import br.com.wsintegrabolao.dto.funcoes.classificacao.ClassificacaoDTO;
+import br.com.wsintegrabolao.funcoes.dto.EquipeDTO;
+import br.com.wsintegrabolao.funcoes.dto.JogoidDTO;
+import br.com.wsintegrabolao.funcoes.dto.classificacao.ClassificacaoDTO;
 import br.com.wsintegrabolao.util.Utils;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -134,6 +134,7 @@ public class funcoes {
 
     /**
      * Operação de Web service
+     * @return 
      */
     @WebMethod(operationName = "getJogoList")
     public String getJogoList() {
@@ -146,5 +147,14 @@ public class funcoes {
             return e.getMessage();
         }
         return Utils.getJsonGenerico(lista, gsonExpose);
+    }
+
+    /**
+     * Operação de Web service
+     */
+    @WebMethod(operationName = "setPalpite")
+    public String setPalpite(@WebParam(name = "palpite") String palpite, @WebParam(name = "token") String token) {
+        //TODO write your implementation code here:
+        return null;
     }
 }

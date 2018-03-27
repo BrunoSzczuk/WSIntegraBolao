@@ -14,8 +14,9 @@ import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import br.com.wsintegrabolao.dto.Validator;
-import br.com.wsintegrabolao.dto.bolao.TipousuarioDTO;
-import br.com.wsintegrabolao.dto.bolao.UsuarioDTO;
+import br.com.wsintegrabolao.bolao.dto.TipousuarioDTO;
+import br.com.wsintegrabolao.bolao.dto.UsuarioDTO;
+import br.com.wsintegrabolao.funcoes.dto.EquipeDTO;
 import br.com.wsintegrabolao.util.Utils;
 import java.util.ArrayList;
 import java.util.List;
@@ -57,12 +58,31 @@ public class bolao {
     public String getTipoUsuario(@WebParam(name = "token") String token) {
         List<TipousuarioDTO> lista = new ArrayList<>();
         if (Validator.validaToken(token)) {
-                for (TipousuarioDAO d : WSIntegraBolaoController.buscaTipoUsuario()){
+            for (TipousuarioDAO d : WSIntegraBolaoController.buscaTipoUsuario()) {
                 lista.add(new TipousuarioDTO(d));
             }
             return Utils.getJsonGenerico(lista, gsonGenerico);
         } else {
             return "ERRO: TOKEN inválido.";
         }
+    }
+
+    /**
+     * Operação de Web service
+     */
+    
+    
+    @WebMethod(operationName = "setPalpite")
+    public String setPalpite(@WebParam(name = "palpite") String palpite, @WebParam(name = "token") String token) {
+        if (Validator.validaToken(token)) {
+            try {
+                
+            } catch (Exception e) {
+
+            }
+        } else {
+            return "ERRO: TOKEN inválido.";
+        }
+        return null;
     }
 }

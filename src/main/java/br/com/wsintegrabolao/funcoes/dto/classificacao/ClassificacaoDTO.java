@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.wsintegrabolao.dto.funcoes.classificacao;
+package br.com.wsintegrabolao.funcoes.dto.classificacao;
 
 import br.com.wsintegrabolao.dao.obj.ClassificacaoDAO;
 import java.io.Serializable;
