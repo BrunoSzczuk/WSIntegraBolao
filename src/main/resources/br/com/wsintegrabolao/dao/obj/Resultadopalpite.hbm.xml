@@ -1,34 +1,33 @@
-<?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 25/03/2018 00:53:08 by Hibernate Tools 3.6.0 -->
 <hibernate-mapping>
-    <class name="br.com.wsintegrabolao.dao.obj.Resultadopalpite" table="resultadopalpite" schema="public">
-        <composite-id name="id" class="br.com.wsintegrabolao.dao.obj.ResultadopalpiteId">
-            <key-property name="cdJogo" type="int">
-                <column name="cd_jogo" />
-            </key-property>
-            <key-property name="cdUsuario" type="string">
-                <column name="cd_usuario" length="20" />
-            </key-property>
-            <key-property name="cdBolao" type="long">
-                <column name="cd_bolao" />
-            </key-property>
-        </composite-id>
-        <one-to-one name="palpite" class="br.com.wsintegrabolao.dao.obj.Palpite" constrained="true"></one-to-one>
-        <property name="qtAcertounico" type="java.lang.Integer">
-            <column name="qt_acertounico">
-                <comment>quantidade de acerto de gols de apenas um time</comment>
-            </column>
-        </property>
-        <property name="qtPontos" type="java.lang.Integer">
-            <column name="qt_pontos" />
-        </property>
-        <property name="qtAcerto" type="java.lang.Integer">
-            <column name="qt_acerto" />
-        </property>
-        <property name="qtErro" type="java.lang.Integer">
-            <column name="qt_erro" />
-        </property>
-    </class>
+  <class name="br.com.wsintegrabolao.dao.obj.Resultadopalpite" schema="public" table="resultadopalpite">
+    <composite-id class="br.com.wsintegrabolao.dao.obj.PalpiteId" name="id">
+      <key-property name="cdJogo" type="int">
+        <column name="cd_jogo"/>
+      </key-property>
+      <key-property name="cdUsuario" type="string">
+        <column length="20" name="cd_usuario"/>
+      </key-property>
+      <key-property name="cdBolao" type="long">
+        <column name="cd_bolao"/>
+      </key-property>
+    </composite-id>
+    <one-to-one class="br.com.wsintegrabolao.dao.obj.PalpiteDAO" constrained="true" name="palpite"/>
+    <property name="qtAcertounico" type="java.lang.Integer">
+      <column name="qt_acertounico">
+        <comment>quantidade de acerto de gols de apenas um time</comment>
+      </column>
+    </property>
+    <property name="qtPontos" type="java.lang.Integer">
+      <column name="qt_pontos"/>
+    </property>
+    <property name="qtAcerto" type="java.lang.Integer">
+      <column name="qt_acerto"/>
+    </property>
+    <property name="qtErro" type="java.lang.Integer">
+      <column name="qt_erro"/>
+    </property>
+  </class>
 </hibernate-mapping>

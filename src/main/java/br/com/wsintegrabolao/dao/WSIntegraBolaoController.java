@@ -5,16 +5,7 @@
  */
 package br.com.wsintegrabolao.dao;
 
-import br.com.wsintegrabolao.dao.obj.ClassificacaoDAO;
-import br.com.wsintegrabolao.dao.obj.Classificacaoderrota;
-import br.com.wsintegrabolao.dao.obj.Classificacaoempate;
-import br.com.wsintegrabolao.dao.obj.Classificacaojogo;
-import br.com.wsintegrabolao.dao.obj.Classificacaopg;
-import br.com.wsintegrabolao.dao.obj.Classificacaovitoria;
-import br.com.wsintegrabolao.dao.obj.EquipeDAO;
-import br.com.wsintegrabolao.dao.obj.JogoidDAO;
-import br.com.wsintegrabolao.dao.obj.TipousuarioDAO;
-import br.com.wsintegrabolao.dao.obj.UsuarioDAO;
+import br.com.wsintegrabolao.dao.obj.*;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
@@ -74,7 +65,7 @@ public class WSIntegraBolaoController {
     }
 
     public static List<EquipeDAO> buscaEquipeList() {
-        return (List<EquipeDAO>)buscaListGenerico(EquipeDAO.class);
+        return (List<EquipeDAO>) buscaListGenerico(EquipeDAO.class);
     }
 
     public static Classificacaoderrota buscaClassificacaoderrota(String cdEquipe) {
@@ -114,10 +105,19 @@ public class WSIntegraBolaoController {
     }
 
     public static List<TipousuarioDAO> buscaTipoUsuario() {
-        return (List<TipousuarioDAO>)buscaListGenerico(TipousuarioDAO.class);
+        return (List<TipousuarioDAO>) buscaListGenerico(TipousuarioDAO.class);
     }
 
     public static ArrayList buscaListGenerico(Class c) {
-        return new ArrayList(ConexaoDAO.getInstance().getEm().createQuery("SELECT e FROM " + c.getName()+ " e", c).getResultList());
+        return new ArrayList(ConexaoDAO.getInstance().getEm().createQuery("SELECT e FROM " + c.getName() + " e", c).getResultList());
     }
+
+    public static List<PalpiteDAO> buscaPalpiteUsuario(String cdUsuario, String cdBolao) {
+        return ConexaoDAO.getInstance().getEm().createQuery("SELECT e from PalpiteDAO e where e.usuario.cdUsuario = :cdUsuario and e.bolao.cdBolao = :cdBolao", PalpiteDAO.class).setParameter("cdUsuario", cdUsuario).setParameter("cdBolao", Long.valueOf(cdBolao)).getResultList();
+    }
+
+    public static List<PalpiteDAO> buscaPalpiteRodada(String nrRodada, String cdBolao) {
+        return ConexaoDAO.getInstance().getEm().createQuery("SELECT e from PalpiteDAO e where e.jogoid.nrRodada = :nrRodada and e.bolao.cdBolao = :cdBolao", PalpiteDAO.class).setParameter("nrRodada", nrRodada).setParameter("cdBolao", Long.valueOf(cdBolao)).getResultList();
+    }
+    
 }

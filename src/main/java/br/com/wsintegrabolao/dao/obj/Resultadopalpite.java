@@ -22,8 +22,8 @@ import javax.persistence.Table;
 public class Resultadopalpite  implements java.io.Serializable {
 
 
-     private ResultadopalpiteId id;
-     private Palpite palpite;
+     private PalpiteId id;
+     private PalpiteDAO palpite;
      private Integer qtAcertounico;
      private Integer qtPontos;
      private Integer qtAcerto;
@@ -33,10 +33,10 @@ public class Resultadopalpite  implements java.io.Serializable {
     }
 
 	
-    public Resultadopalpite(Palpite palpite) {
+    public Resultadopalpite(PalpiteDAO palpite) {
         this.palpite = palpite;
     }
-    public Resultadopalpite(Palpite palpite, Integer qtAcertounico, Integer qtPontos, Integer qtAcerto, Integer qtErro) {
+    public Resultadopalpite(PalpiteDAO palpite, Integer qtAcertounico, Integer qtPontos, Integer qtAcerto, Integer qtErro) {
        this.palpite = palpite;
        this.qtAcertounico = qtAcertounico;
        this.qtPontos = qtPontos;
@@ -51,20 +51,20 @@ public class Resultadopalpite  implements java.io.Serializable {
         @AttributeOverride(name="cdJogo", column=@Column(name="cd_jogo", nullable=false) ), 
         @AttributeOverride(name="cdUsuario", column=@Column(name="cd_usuario", nullable=false, length=20) ), 
         @AttributeOverride(name="cdBolao", column=@Column(name="cd_bolao", nullable=false) ) } )
-    public ResultadopalpiteId getId() {
+    public PalpiteId getId() {
         return this.id;
     }
     
-    public void setId(ResultadopalpiteId id) {
+    public void setId(PalpiteId id) {
         this.id = id;
     }
 
 @OneToOne(fetch=FetchType.LAZY)@PrimaryKeyJoinColumn
-    public Palpite getPalpite() {
+    public PalpiteDAO getPalpite() {
         return this.palpite;
     }
     
-    public void setPalpite(Palpite palpite) {
+    public void setPalpite(PalpiteDAO palpite) {
         this.palpite = palpite;
     }
 

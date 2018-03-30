@@ -32,4 +32,5 @@
         <property name="driverClass" value="org.postgresql.Driver"/>
     </jdbc-connection-pool>
     <jdbc-resource enabled="true" jndi-name="BR-ConexaoAmazon" object-type="user" pool-name="post-gre-sql_bolao_brunoPool_1"/>
+    <jdbc-resource enabled="true" jndi-name="jdbc/bolao" object-type="user" pool-name="post-gre-sql_bolao_brunoPool_1"/>
 </resources>

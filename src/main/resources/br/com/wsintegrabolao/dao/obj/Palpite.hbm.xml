@@ -2,7 +2,7 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 25/03/2018 00:53:08 by Hibernate Tools 3.6.0 -->
 <hibernate-mapping>
-  <class name="br.com.wsintegrabolao.dao.obj.Palpite" schema="public" table="palpite">
+  <class name="br.com.wsintegrabolao.dao.obj.PalpiteDAO" schema="public" table="palpite">
     <composite-id class="br.com.wsintegrabolao.dao.obj.PalpiteId" name="id">
       <key-property name="cdJogo" type="int">
         <column name="cd_jogo"/>
