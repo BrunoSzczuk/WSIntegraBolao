@@ -119,5 +119,13 @@ public class WSIntegraBolaoController {
     public static List<PalpiteDAO> buscaPalpiteRodada(String nrRodada, String cdBolao) {
         return ConexaoDAO.getInstance().getEm().createQuery("SELECT e from PalpiteDAO e where e.jogoid.nrRodada = :nrRodada and e.bolao.cdBolao = :cdBolao", PalpiteDAO.class).setParameter("nrRodada", nrRodada).setParameter("cdBolao", Long.valueOf(cdBolao)).getResultList();
     }
+
+    public static Bolao buscaBolao(String cdBolao) {
+        return ConexaoDAO.getInstance().getEm().find(Bolao.class,  Long.valueOf(cdBolao));
+    }
     
+    public static PalpiteDAO buscaPalpitePK(PalpiteId pk){
+        return ConexaoDAO.getInstance().getEm().createQuery("SELECT e from PalpiteDAO e where e.id = :id", PalpiteDAO.class).setParameter("id", pk).getSingleResult();
+    }
+
 }

@@ -32,6 +32,7 @@ br\com\wsintegrabolao\dao\obj\Erro.class
 br\com\wsintegrabolao\dao\obj\Estatisticausuario.class
 br\com\wsintegrabolao\dao\obj\Classificacaoderrota_.class
 br\com\wsintegrabolao\dto\Validator.class
+br\com\wsintegrabolao\dao\obj\PalpiteDAO.class
 br\com\wsintegrabolao\dao\obj\ClassificacaoDAO_.class
 br\com\wsintegrabolao\dao\obj\TipousuarioDAO.class
 br\com\wsintegrabolao\bolao\dto\PalpiteDTO.class
@@ -53,6 +54,7 @@ br\com\wsintegrabolao\funcoes\dto\JogoidDTO.class
 br\com\wsintegrabolao\dao\obj\Sugestao_.class
 org\netbeans\rest\application\config\ApplicationConfig.class
 br\com\wsintegrabolao\dao\obj\Classificacaoderrota.class
+br\com\wsintegrabolao\dao\obj\PalpiteDAO_.class
 br\com\wsintegrabolao\dao\obj\Schedule.class
 br\com\wsintegrabolao\dao\obj\PalpitesId_.class
 br\com\wsintegrabolao\dao\obj\Posicaousuario.class
@@ -64,6 +66,7 @@ br\com\wsintegrabolao\dao\obj\Rodada.class
 br\com\wsintegrabolao\dao\obj\Classificacaojogo_.class
 br\com\wsintegrabolao\ws\bolao.class
 br\com\wsintegrabolao\dao\obj\Classificacaopg_.class
+br\com\wsintegrabolao\bolao\dto\PalpiteId.class
 br\com\wsintegrabolao\dao\obj\BolaousuarioId.class
 br\com\wsintegrabolao\dao\obj\Datajogos.class
 br\com\wsintegrabolao\dao\obj\Parametros_.class
@@ -81,4 +84,5 @@ br\com\wsintegrabolao\dto\HibernateProxyTypeAdapter.class
 br\com\wsintegrabolao\dao\WSIntegraBolaoController.class
 br\com\wsintegrabolao\dao\obj\EstatisticausuarioId_.class
 br\com\wsintegrabolao\dto\HibernateProxyTypeAdapter$1.class
+br\com\wsintegrabolao\bolao\service\PalpiteService.class
 br\com\wsintegrabolao\dao\obj\EquipeDAO_.class
