@@ -149,12 +149,4 @@ public class funcoes {
         return Utils.getJsonGenerico(lista, gsonExpose);
     }
 
-    /**
-     * Operação de Web service
-     */
-    @WebMethod(operationName = "setPalpite")
-    public String setPalpite(@WebParam(name = "palpite") String palpite, @WebParam(name = "token") String token) {
-        //TODO write your implementation code here:
-        return null;
-    }
 }

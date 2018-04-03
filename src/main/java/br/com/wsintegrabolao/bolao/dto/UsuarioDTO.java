@@ -36,6 +36,8 @@ public class UsuarioDTO implements Serializable {
     @SerializedName("dtCadastro")
     @Expose
     private Date dtCadastro;
+    @Expose
+
     private final static long serialVersionUID = -4064195173492234320L;
 
     /**
@@ -97,18 +99,6 @@ public class UsuarioDTO implements Serializable {
         return this;
     }
 
-    public TipousuarioDTO getTipousuarioDTO() {
-        return tipousuario;
-    }
-
-    public void setTipousuarioDTO(TipousuarioDTO tipousuario) {
-        this.tipousuario = tipousuario;
-    }
-
-    public UsuarioDTO withTipousuarioDTO(TipousuarioDTO tipousuario) {
-        this.tipousuario = tipousuario;
-        return this;
-    }
 
     public boolean isStAtivo() {
         return stAtivo;

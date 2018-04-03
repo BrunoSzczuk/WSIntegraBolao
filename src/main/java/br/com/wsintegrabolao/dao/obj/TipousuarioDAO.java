@@ -1,13 +1,11 @@
 package br.com.wsintegrabolao.dao.obj;
 // Generated 25/03/2018 00:53:08 by Hibernate Tools 3.6.0
 
-import java.util.HashSet;
+import br.com.wsintegrabolao.bolao.dto.TipousuarioDTO;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -34,8 +32,13 @@ public class TipousuarioDAO implements java.io.Serializable {
         this.dsTipo = dsTipo;
     }
 
+    public TipousuarioDAO(TipousuarioDTO t){
+        this.cdTipo = t.getCdTipo();
+        this.dsTipo = t.getDsTipo();
+    }
+    
+    
     @Id
-
     @Column(name = "cd_tipo", nullable = false)
     public int getCdTipo() {
         return this.cdTipo;

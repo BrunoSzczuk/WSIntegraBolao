@@ -97,7 +97,7 @@ public class WSIntegraBolaoController {
     }
 
     public static List<JogoidDAO> buscaJogoRodada(String nrRodada) {
-        return ConexaoDAO.getInstance().getEm().createQuery("SELECT e from Jogoid e where e.nrRodada = :nrRodada", JogoidDAO.class).setParameter("nrRodada", nrRodada).getResultList();
+        return ConexaoDAO.getInstance().getEm().createQuery("SELECT e from JogoidDAO e where e.nrRodada = :nrRodada", JogoidDAO.class).setParameter("nrRodada", nrRodada).getResultList();
     }
 
     public static UsuarioDAO buscaUsuario(String cdUsuario) {
@@ -113,18 +113,20 @@ public class WSIntegraBolaoController {
     }
 
     public static List<PalpiteDAO> buscaPalpiteUsuario(String cdUsuario, String cdBolao) {
-        return ConexaoDAO.getInstance().getEm().createQuery("SELECT e from PalpiteDAO e where e.usuario.cdUsuario = :cdUsuario and e.bolao.cdBolao = :cdBolao", PalpiteDAO.class).setParameter("cdUsuario", cdUsuario).setParameter("cdBolao", Long.valueOf(cdBolao)).getResultList();
+        return ConexaoDAO.getInstance().getEm().createQuery("SELECT e from PalpiteDAO e where e.usuario.cdUsuario = :cdUsuario and e.bolao.cdBolao = :cdBolao", PalpiteDAO.class)
+                .setParameter("cdUsuario", cdUsuario).setParameter("cdBolao", Long.valueOf(cdBolao)).getResultList();
     }
 
     public static List<PalpiteDAO> buscaPalpiteRodada(String nrRodada, String cdBolao) {
-        return ConexaoDAO.getInstance().getEm().createQuery("SELECT e from PalpiteDAO e where e.jogoid.nrRodada = :nrRodada and e.bolao.cdBolao = :cdBolao", PalpiteDAO.class).setParameter("nrRodada", nrRodada).setParameter("cdBolao", Long.valueOf(cdBolao)).getResultList();
+        return ConexaoDAO.getInstance().getEm().createQuery("SELECT e from PalpiteDAO e where e.jogoid.nrRodada = :nrRodada and e.bolao.cdBolao = :cdBolao", PalpiteDAO.class)
+                .setParameter("nrRodada", nrRodada).setParameter("cdBolao", Long.valueOf(cdBolao)).getResultList();
     }
 
     public static Bolao buscaBolao(String cdBolao) {
-        return ConexaoDAO.getInstance().getEm().find(Bolao.class,  Long.valueOf(cdBolao));
+        return ConexaoDAO.getInstance().getEm().find(Bolao.class, Long.valueOf(cdBolao));
     }
-    
-    public static PalpiteDAO buscaPalpitePK(PalpiteId pk){
+
+    public static PalpiteDAO buscaPalpitePK(PalpiteId pk) {
         return ConexaoDAO.getInstance().getEm().createQuery("SELECT e from PalpiteDAO e where e.id = :id", PalpiteDAO.class).setParameter("id", pk).getSingleResult();
     }
 

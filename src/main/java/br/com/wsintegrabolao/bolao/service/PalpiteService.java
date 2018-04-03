@@ -74,7 +74,14 @@ public class PalpiteService {
             if (WSIntegraBolaoController.buscaJogo(palpiteDTO.getCdJogo()) == null) {
                 throw new Exception("O jogo informado não existe");
             }
-            this.palpiteDAO = WSIntegraBolaoController.buscaPalpitePK(new PalpiteId(palpiteDTO.getCdJogo(), palpiteDTO.getCdUsuario(), palpiteDTO.getCdBolao()));
+            PalpiteId pk = new PalpiteId(palpiteDTO.getCdJogo(), palpiteDTO.getCdUsuario(), palpiteDTO.getCdBolao());
+            this.palpiteDAO = WSIntegraBolaoController.buscaPalpitePK(pk);
+            if (this.palpiteDAO == null){
+                this.palpiteDAO = new PalpiteDAO();
+                this.palpiteDAO.setId(pk);
+                this.palpiteDAO.setUsuario(WSIntegraBolaoController.buscaUsuario(pk.getCdUsuario()));
+                this.palpiteDAO.setJogoid(WSIntegraBolaoController.buscaJogo(pk.getCdJogo()));
+            }
             this.palpiteDAO.setDtAposta(palpiteDTO.getDtAposta());
             this.palpiteDAO.setNrGols1((int)palpiteDTO.getNrGols1());
             this.palpiteDAO.setNrGols2((int)palpiteDTO.getNrGols2());

@@ -16,6 +16,7 @@ import javax.jws.WebParam;
 import br.com.wsintegrabolao.dto.Validator;
 import br.com.wsintegrabolao.bolao.dto.*;
 import br.com.wsintegrabolao.bolao.service.PalpiteService;
+import br.com.wsintegrabolao.bolao.service.UsuarioService;
 import br.com.wsintegrabolao.dao.ConexaoDAO;
 import br.com.wsintegrabolao.dao.obj.PalpiteDAO;
 import br.com.wsintegrabolao.util.Utils;
@@ -145,5 +146,25 @@ public class bolao {
         } else {
             return "ERRO: TOKEN inválido.";
         }
+    }
+
+    /**
+     * Operação de Web service
+     */
+    @WebMethod(operationName = "setUsuario")
+    public String setUsuario(@WebParam(name = "json") String json, @WebParam(name = "token") String token) {
+        if (Validator.validaToken(token)) {
+             try {
+                UsuarioService u = new UsuarioService(gsonExpose.fromJson(json, UsuarioDTO.class));
+                u.validar();
+                conn.persist(u);                
+            } catch (Exception e) {
+                e.printStackTrace();
+                return "ERRO:" + e.getMessage();
+            }
+        } else {
+            return "ERRO: TOKEN inválido.";
+        }
+        return " ";
     }
 }
