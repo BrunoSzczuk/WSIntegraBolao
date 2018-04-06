@@ -6,9 +6,11 @@
 package br.com.wsintegrabolao.bolao.service;
 
 import br.com.wsintegrabolao.bolao.dto.UsuarioDTO;
+import br.com.wsintegrabolao.dao.ConexaoDAO;
 import br.com.wsintegrabolao.dao.WSIntegraBolaoController;
 import br.com.wsintegrabolao.dao.obj.TipousuarioDAO;
 import br.com.wsintegrabolao.dao.obj.UsuarioDAO;
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -67,13 +69,19 @@ public class UsuarioService {
             if ((usuarioDAO = WSIntegraBolaoController.buscaUsuario(usuarioDTO.getCdUsuario())) == null) {
                 usuarioDAO = new UsuarioDAO();
                 usuarioDAO.setCdUsuario(usuarioDTO.getCdUsuario());
+                usuarioDAO.setDtCadastro(new Date());
+                usuarioDAO.setNrPontuacao(new BigDecimal(0));
             }
             usuarioDAO.setDsEmail(usuarioDTO.getDsEmail());
             usuarioDAO.setDtNascimento(usuarioDTO.getDtNascimento());
+            usuarioDAO.setNmUsuario(usuarioDTO.getNmUsuario());
+            usuarioDAO.setDsEmail(usuarioDTO.getDsEmail());
             usuarioDAO.setStAtivo(usuarioDTO.isStAtivo());
             usuarioDAO.setTipousuario(new TipousuarioDAO(usuarioDTO.getTipousuario()));
             usuarioDAO.setSnUsuario(usuarioDTO.getSnUsuario());
             
+            
+            ConexaoDAO.getInstance().persist(usuarioDAO);
         } catch (Exception e) {
             throw new Exception("Erro ao transformar em classe DAO -> Usuario.");
         }

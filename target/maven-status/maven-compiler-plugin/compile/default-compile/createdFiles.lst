@@ -54,6 +54,7 @@ br\com\wsintegrabolao\funcoes\dto\JogoidDTO.class
 br\com\wsintegrabolao\dao\obj\Sugestao_.class
 org\netbeans\rest\application\config\ApplicationConfig.class
 br\com\wsintegrabolao\dao\obj\Classificacaoderrota.class
+br\com\wsintegrabolao\bolao\service\UsuarioService.class
 br\com\wsintegrabolao\dao\obj\PalpiteDAO_.class
 br\com\wsintegrabolao\dao\obj\Schedule.class
 br\com\wsintegrabolao\dao\obj\PalpitesId_.class

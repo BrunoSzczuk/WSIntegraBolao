@@ -86,6 +86,7 @@ public class PalpiteService {
             this.palpiteDAO.setNrGols1((int)palpiteDTO.getNrGols1());
             this.palpiteDAO.setNrGols2((int)palpiteDTO.getNrGols2());
             this.palpiteDAO.setDtUltimaatt(new Date());
+            ConexaoDAO.getInstance().persist(palpiteDAO);
             
         } catch (Exception e) {
             e.printStackTrace();

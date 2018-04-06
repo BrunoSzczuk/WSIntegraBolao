@@ -113,6 +113,7 @@ public class ConexaoDAO {
         try {
             Object novo = em.merge(obj);
             obj = novo;
+            commit();
         } catch (Exception ex) {
             try {
                 em.persist(obj);

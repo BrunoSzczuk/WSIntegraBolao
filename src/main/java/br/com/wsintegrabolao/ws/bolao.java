@@ -17,7 +17,6 @@ import br.com.wsintegrabolao.dto.Validator;
 import br.com.wsintegrabolao.bolao.dto.*;
 import br.com.wsintegrabolao.bolao.service.PalpiteService;
 import br.com.wsintegrabolao.bolao.service.UsuarioService;
-import br.com.wsintegrabolao.dao.ConexaoDAO;
 import br.com.wsintegrabolao.dao.obj.PalpiteDAO;
 import br.com.wsintegrabolao.util.Utils;
 import java.util.ArrayList;
@@ -33,7 +32,6 @@ public class bolao {
 
     Gson gsonGenerico = new GsonBuilder().registerTypeAdapterFactory(HibernateProxyTypeAdapter.FACTORY).setDateFormat("yyyy-MM-dd HH:mm:ss").create();
     Gson gsonExpose = new GsonBuilder().registerTypeAdapterFactory(HibernateProxyTypeAdapter.FACTORY).setDateFormat("yyyy-MM-dd HH:mm:ss").excludeFieldsWithoutExposeAnnotation().create();
-    ConexaoDAO conn = ConexaoDAO.getInstance();
     /**
      * Operação de Web service
      *
@@ -79,14 +77,15 @@ public class bolao {
 
     /**
      * Operação de Web service
+     * @param palpite
+     * @param token
+     * @return 
      */
     @WebMethod(operationName = "setPalpite")
     public String setPalpite(@WebParam(name = "palpite") String palpite, @WebParam(name = "token") String token) {
         if (Validator.validaToken(token)) {
              try {
-                PalpiteService p = new PalpiteService(gsonExpose.fromJson(palpite, PalpiteDTO.class));
-                p.validar();
-                conn.persist(p);                
+                new PalpiteService(gsonExpose.fromJson(palpite, PalpiteDTO.class)).validar();
             } catch (Exception e) {
                 e.printStackTrace();
                 return "ERRO:" + e.getMessage();
@@ -101,6 +100,7 @@ public class bolao {
      * Operação de Web service
      *
      * @param cdUsuario
+     * @param cdBolao
      * @param token
      * @return
      */
@@ -150,14 +150,13 @@ public class bolao {
 
     /**
      * Operação de Web service
+     * @param json
      */
     @WebMethod(operationName = "setUsuario")
     public String setUsuario(@WebParam(name = "json") String json, @WebParam(name = "token") String token) {
         if (Validator.validaToken(token)) {
              try {
-                UsuarioService u = new UsuarioService(gsonExpose.fromJson(json, UsuarioDTO.class));
-                u.validar();
-                conn.persist(u);                
+                new UsuarioService(gsonExpose.fromJson(json, UsuarioDTO.class)).validar();
             } catch (Exception e) {
                 e.printStackTrace();
                 return "ERRO:" + e.getMessage();
